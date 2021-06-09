@@ -41,9 +41,19 @@ a:hover {
 /*Main content*/
 
 .main-content{
-	margin-top: 40px;
+	margin-top: 80px;
 	margin-left: auto;
 	margin-right: auto;
+	height: 100%;
 	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
 	border: solid;
+}
+
+#login{
+	margin-left: auto;
+	height: 100%;
+	width: 200px;
+	
 }

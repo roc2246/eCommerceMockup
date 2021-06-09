@@ -1,7 +1,7 @@
 // Hides Child Elements
 function hideSubCats(){
 	var subCats = document.getElementsByTagName("UL");
-	for(var i = 1; i<=3; i++){
+	for(var i = 1; i<=4; i++){
 		subCats[i].style.display = "none";
 	}
 }
@@ -16,3 +16,4 @@ function hideCat(ulNo) {
 		document.getElementsByTagName("UL")[ulNo].style.display = "none";
 
 }
+
