@@ -18,7 +18,7 @@
 
 		<li class="category" onmouseover="revealCat(3)" onmouseleave="hideCat(3)">Bindings
 			<ul>
-				<li><a href="nothing.html">Union Flite</a></li>
+				<li><a href="nothing.html">Union Eloite22</a></li>
 				<li><a href="nothing.html">Union Contact</a></li>
 				<li><a href="nothing.html">Burton Mission</a></li>
 			</ul> 
