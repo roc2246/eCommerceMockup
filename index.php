@@ -43,7 +43,11 @@
 </navigation>
 
 
+<<<<<<< HEAD
 <div class="main-content">
+=======
+<div class="main content">
+>>>>>>> 8f948f6e9e2fd757ea59d4fb8d50611c65661d4a
 
 </div>
 
