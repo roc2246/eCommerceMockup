@@ -1,0 +1,38 @@
+
+/*Styles Whole Menu*/
+#selectGear {
+	list-style-type: none;
+	position: absolute;
+	font-family: sans-serif;
+	font-size: 100%;
+	width: 500px;
+}
+
+/*Styles Each Category*/
+.category {
+	background-color: silver;
+	border: 1px solid black;
+	width: 110px;
+	
+	float: left;
+	margin-right: 4px;
+	
+}
+
+/*Styles Each Child Element*/
+.category ul {
+	list-style-type: none;
+	border-top: 1px solid black;
+	padding-left: 0px;
+}
+
+.category ul li{
+   padding: 2px;
+   margin: 2px;
+}
+
+
+/*Styles Links on Hover*/
+a:hover {
+  color: #2e8b57;
+}
