@@ -1,3 +1,4 @@
+<php include 'include/connect.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,5 +19,40 @@
     
     -->
     </form>
+
+<!--Reformat Later-->
+<?php 
+if(isset($_POST['submit'])) {
+    global $connection;
+        
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+        
+    $username = mysqli_real_escape_string($connection, $username );   
+    $password = mysqli_real_escape_string($connection, $password );
+       
+    
+    $hashFormat = "$2y$10$"; 
+    $salt = "iusesomecrazystrings22";
+    $hashF_and_salt = $hashFormat . $salt;
+    $password = crypt($password,$hashF_and_salt);   
+        
+        $query = "INSERT INTO users(username,password) ";
+        $query .= "VALUES ('$username', '$password')";
+        
+       $result = mysqli_query($connection, $query);
+        if(!$result) {
+            die('Query FAILED' . mysqli_error());
+        
+        } else {
+        
+        echo "Record Create"; 
+        
+        }
+
+
+?>
+
+
 </body>
 </html>
