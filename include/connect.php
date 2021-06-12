@@ -2,7 +2,7 @@
 $servername = 'localhost';
 $username = 'root';
 $password = 'root';
-$database = 'root';
+$database = 'eCommerce';
 
 
 
@@ -11,5 +11,6 @@ $database = 'root';
  if(!$connection) {
      die("Database connection failed");
  }
+
 
 ?>
