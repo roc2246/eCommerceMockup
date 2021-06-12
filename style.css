@@ -52,6 +52,11 @@ a:hover {
 	border: solid;
 }
 
+.item {
+	border-style: solid;
+	justify-content: space-around;
+}
+
 #login{
 	margin-left: auto;
 	height: 100%;

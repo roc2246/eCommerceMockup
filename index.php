@@ -29,8 +29,7 @@ function readRows() {
 while($row = mysqli_fetch_assoc($result)) {
         
         //print_r($row);
-        echo "<div class='item'>" . $row['prodID'] . "</div> <br><br>";
-        echo "<br><br>";
+        echo "<div class='item'>" . $row['prodID'] . " " . $row['brand'].  " ". "</div> <br><br>";
       
     }  
 }
