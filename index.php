@@ -27,11 +27,12 @@ function readRows() {
     }
         
 while($row = mysqli_fetch_assoc($result)) {
-        
+        $product = "<div class='item'>";
+        $product.=  "<img src='uploads/" . $row['image'] . "' width='50px' height='120px'>";
+        $product.= $row['brand'];
+        $product.="</div>";
         //print_r($row);
-        echo "<div class='item'>" . $row['prodID'] . "</div> <br><br>";
-        echo "<br><br>";
-      
+        echo $product;
     }  
 }
 ?>
