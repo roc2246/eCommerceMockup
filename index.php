@@ -1,4 +1,4 @@
-<php include 'include/connect.php' ?>
+<?php include 'include/connect.php' ?>
 <?php 
 
 if(isset($_POST['submit'])) {
@@ -20,7 +20,7 @@ $password = $_POST['password'];
 
 function readRows() {
     global $connection;
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM inventory";
     $result = mysqli_query($connection, $query);
     if(!$result) {
         die('Query FAILED' . mysqli_error($connection));
@@ -28,7 +28,10 @@ function readRows() {
         
 while($row = mysqli_fetch_assoc($result)) {
         
-        print_r($row);
+        //print_r($row);
+        echo "<div class='item'>" . $row['prodID'] . "</div> <br><br>";
+        echo "<br><br>";
+      
     }  
 }
 ?>
@@ -54,7 +57,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
 <div class="main-content">
 
-
+<?php readRows(); ?>
 
 <div id="login">
 <h4>Login</h4>

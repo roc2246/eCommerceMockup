@@ -1,6 +1,6 @@
 <?php include 'include/connect.php' ?>
 
-<!--Reformat Later-->
+<!--Reformat Later to understand-->
 <?php
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["image"]["name"]);
