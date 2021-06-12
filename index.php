@@ -18,7 +18,7 @@ $password = $_POST['password'];
 
 }
 
-function readRows() {
+function getInventory() {
     global $connection;
     $query = "SELECT * FROM inventory";
     $result = mysqli_query($connection, $query);
@@ -28,10 +28,13 @@ function readRows() {
         
 while($row = mysqli_fetch_assoc($result)) {
         $product = "<div class='item'>";
-        $product.=  "<img src='uploads/" . $row['image'] . "' width='50px' height='120px'>";
-        $product.= $row['brand'];
+        $product.=  "<img src='uploads/" . $row['image'] . "' width='50px' height='120px'><br>";
+        $product.= "Brand: " . $row['brand'] . "<br>";
+        $product.= "Model: " . $row['model'] . "<br>";
+        $product.= "Size: " . $row['size'] . "<br>";
+        $product.= "Price: " . $row['price'] . "<br>";
+        $product.= "<a href=''>Add to Cart</a>";
         $product.="</div>";
-        //print_r($row);
         echo $product;
     }  
 }
@@ -58,7 +61,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
 <div class="main-content">
 
-<?php readRows(); ?>
+<?php getInventory(); ?>
 
 <div id="login">
 <h4>Login</h4>
