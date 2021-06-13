@@ -1,44 +1,5 @@
 <?php include 'include/connect.php' ?>
-<?php 
-
-if(isset($_POST['submit'])) {
-   global $connection;
-$username = $_POST['username'];
-$password = $_POST['password'];
-    
-    if($connection) {
-    
-    echo "We are connected";
-    
-    } else {
-    
-    die("Database connection failed");
-    
-    }
-
-}
-
-function getInventory() {
-    global $connection;
-    $query = "SELECT * FROM inventory";
-    $result = mysqli_query($connection, $query);
-    if(!$result) {
-        die('Query FAILED' . mysqli_error($connection));
-    }
-        
-while($row = mysqli_fetch_assoc($result)) {
-        $product = "<div class='item'>";
-        $product.=  "<img src='uploads/" . $row['image'] . "' width='50px' height='120px'><br>";
-        $product.= "Brand: " . $row['brand'] . "<br>";
-        $product.= "Model: " . $row['model'] . "<br>";
-        $product.= "Size: " . $row['size'] . "<br>";
-        $product.= "Price: " . $row['price'] . "<br>";
-        $product.= "<a href=''>Add to Cart</a>";
-        $product.="</div>";
-        echo $product;
-    }  
-}
-?>
+<?php include 'functions.php'?>
 
 
 <!DOCTYPE html>
