@@ -61,7 +61,7 @@ function invenProd(){
 
         if($brand == '') {
           echo "please enter a brand name<br><br>";
-        }
+        } else {
         
         $query = "INSERT INTO inventory(brand,model,price,size, image) VALUES ('$brand', '$model','$price', '$size', '$image')";
         
@@ -73,6 +73,9 @@ function invenProd(){
             echo "Item successfully added to inventory.<br><br>";
             uploadImage();
         }
+
+      }
+
     }
 }
 
