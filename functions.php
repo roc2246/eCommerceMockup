@@ -61,31 +61,32 @@ function invenProd(){
     $price = $_POST['price'];
     $image = $_FILES["image"]["name"];
 
+    $query = "INSERT INTO inventory(brand,model,price,size, image) VALUES ('$brand', '$model','$price', '$size', '$image')";
+    $result = mysqli_query($connection, $query);
+
         if($brand == '') {
-          echo "please enter a brand name<br><br>";
-        } else if($model == '') {
-          echo "please enter a model name<br><br>";
-        }else if($size == '') {
-          echo "please enter a size<br><br>";
-        } else if($price == '') {
-          echo "please enter a price<br><br>";
-        } else{
+          echo "<p class='upload-fail'>please enter a brand name</p>";
+        } 
+        if($model == '') {
+          echo "<p class='upload-fail'>please enter a model name</p>";
+        }
+        if($size == '') {
+          echo "<p class='upload-fail'>please enter a size</p>";
+        } 
+        if($price == '') {
+          echo "<p class='upload-fail'>please enter a price</p>";
+        } 
         
-        $query = "INSERT INTO inventory(brand,model,price,size, image) VALUES ('$brand', '$model','$price', '$size', '$image')";
-        
-       $result = mysqli_query($connection, $query);
+     
         if(!$result) {
             die('Query FAILED: ' . mysqli_error($connection));
-        
         } else {
-            echo "Item successfully added to inventory.<br><br>";
+            echo "<p class='upload-success'>Item successfully added to inventory.</p>";
             uploadImage();
+          }
         }
-
       }
-
-    }
-}
+      
 
 function getInventory() {
     global $connection;
@@ -99,7 +100,7 @@ while($row = mysqli_fetch_assoc($result)) {
         $product = "<div class='item'>";
 
         if ($row['image'] == ''){
-          $product.=  "<img src='uploads/blog.png' width='50px' height='120px'><br>";
+          $product.=  "<img src='noImage.png' width='50px' height='120px'><br>";
         }else {
           $product.=  "<img src='uploads/" . $row['image'] . "' width='50px' height='120px'><br>";
         }

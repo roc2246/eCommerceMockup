@@ -9,7 +9,7 @@
     <title>UIpload YOur Inventory</title>
 </head>
 <body>
-    <form name="uploads"  method="post" enctype="multipart/form-data">
+    <form name="uploads" action="uploadProduct.php"  method="post" enctype="multipart/form-data">
        <label>Brand:</label>
         <input type="text" name="brand"><br><br>
        <label>Model:</label>
@@ -29,29 +29,6 @@
 </div>
 
     </form>
-  <!--  
-<script>
-var uploads = document.uploads;
-console.log(document.uploads.submit.clicked);
-//txtboxes
-var brand = document.uploads.brand;
-var model = document.uploads.model;
-var price = document.uploads.price;
-var size = document.uploads.size;
-
-if (document.uploads.brand.value == ""){
-    alert("test");
-    brand.focus();
-    uploads.setAttribute("action", "");
-	uploads.setAttribute("onsubmit", "return false;");
-} else {
-    uploads.action = "uploadProduct.php";
-    document.getElementByID('concept').innerHTML = ;
-}
-
-
-</script>
--->
 
 </body>
 </html>
