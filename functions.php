@@ -59,16 +59,19 @@ function invenProd(){
     $price = $_POST['price'];
     $image = $_FILES["image"]["name"];
 
-
+        if($brand == '') {
+          echo "please enter a brand name<br><br>";
+        }
         
         $query = "INSERT INTO inventory(brand,model,price,size, image) VALUES ('$brand', '$model','$price', '$size', '$image')";
         
        $result = mysqli_query($connection, $query);
         if(!$result) {
-            die('Query FAILED' . mysqli_error($connection));
+            die('Query FAILED: ' . mysqli_error($connection));
         
         } else {
             echo "Item successfully added to inventory.<br><br>";
+            uploadImage();
         }
     }
 }
