@@ -36,9 +36,6 @@
 
 </div>
 
-
-
-
 <script src="dropdownScript.js"></script>
 
 

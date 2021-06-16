@@ -97,7 +97,12 @@ function getInventory() {
         
 while($row = mysqli_fetch_assoc($result)) {
         $product = "<div class='item'>";
-        $product.=  "<img src='uploads/" . $row['image'] . "' width='50px' height='120px'><br>";
+
+        if ($row['image'] == ''){
+          $product.=  "<img src='uploads/blog.png' width='50px' height='120px'><br>";
+        }else {
+          $product.=  "<img src='uploads/" . $row['image'] . "' width='50px' height='120px'><br>";
+        }
         $product.= "Brand: " . $row['brand'] . "<br>";
         $product.= "Model: " . $row['model'] . "<br>";
         $product.= "Size: " . $row['size'] . "<br>";
