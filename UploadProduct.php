@@ -41,7 +41,7 @@ var price = document.uploads.price;
 var size = document.uploads.size;
 
 //RegEx
-var regExPrice = /(\d+\.\d{1,2})/g;
+var regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
 //var RegExSize = //g;
 
 //Enable Data Submission
@@ -77,13 +77,11 @@ document.uploads.submit.addEventListener("click", function(){
         alert("Please Enter a Model Name");
         model.focus();
 		model.select();
-        //Fix this part
     }else if (!regExPrice.test(price.value)){
         preventSubmit();
-        alert("Please Enter a BLegitemate price");
+        alert("Please Enter a Legitemate price");
         price.focus();
 		price.select();
-        ////
     } else if (size.value == ""){
         preventSubmit();
         alert("Please Enter a size");
