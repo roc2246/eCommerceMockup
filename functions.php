@@ -64,19 +64,22 @@ function invenProd(){
     $query = "INSERT INTO inventory(brand,model,price,size, image) VALUES ('$brand', '$model','$price', '$size', '$image')";
     $result = mysqli_query($connection, $query);
 
-        if($brand == '') {
+      if($brand == '') {
           echo "<p class='upload-fail'>please enter a brand name</p>";
+          
         } 
         if($model == '') {
+          
           echo "<p class='upload-fail'>please enter a model name</p>";
         }
         if($size == '') {
+          
           echo "<p class='upload-fail'>please enter a size</p>";
         } 
         if($price == '') {
+          
           echo "<p class='upload-fail'>please enter a price</p>";
         } 
-        
      
         if(!$result) {
             die('Query FAILED: ' . mysqli_error($connection));
@@ -86,6 +89,7 @@ function invenProd(){
           }
         }
       }
+    
       
 
 function getInventory() {

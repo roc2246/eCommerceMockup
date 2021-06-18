@@ -9,7 +9,7 @@
     <title>UIpload YOur Inventory</title>
 </head>
 <body>
-    <form name="uploads" action="uploadProduct.php"  method="post" enctype="multipart/form-data">
+    <form name="uploads"  method="post" enctype="multipart/form-data">
        <label>Brand:</label>
         <input type="text" name="brand"><br><br>
        <label>Model:</label>
