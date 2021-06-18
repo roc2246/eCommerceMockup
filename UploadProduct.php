@@ -42,7 +42,7 @@ var size = document.uploads.size;
 
 //RegEx
 var RegExPrice = /(\d+\.\d{1,2})/g;
-var RegExSize = //;
+var RegExSize = //g;
 
 //Enable Data Submission
 function enableSubmit(){
