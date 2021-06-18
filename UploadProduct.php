@@ -41,8 +41,8 @@ var price = document.uploads.price;
 var size = document.uploads.size;
 
 //RegEx
-var RegExPrice = /(\d+\.\d{1,2})/g;
-var RegExSize = //g;
+var regExPrice = /(\d+\.\d{1,2})/g;
+//var RegExSize = //g;
 
 //Enable Data Submission
 function enableSubmit(){
@@ -67,10 +67,30 @@ document.uploads.submit.addEventListener("click", function(){
         size.value != "" ){
         alert("SUCCESS");
         enableSubmit();
-    }else{
+    }else if (brand.value == ""){
         preventSubmit();
-        alert("FAILURE");
+        alert("Please Enter a Brand Name");
+        brand.focus();
+		brand.select();
+    }else if (model.value == ""){
+        preventSubmit();
+        alert("Please Enter a Model Name");
+        model.focus();
+		model.select();
+        //Fix this part
+    }else if (!regExPrice.test(price.value)){
+        preventSubmit();
+        alert("Please Enter a BLegitemate price");
+        price.focus();
+		price.select();
+        ////
+    } else if (size.value == ""){
+        preventSubmit();
+        alert("Please Enter a size");
+        size.focus();
+		size.select();
     }
+    
 });
 
 
