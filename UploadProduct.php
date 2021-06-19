@@ -65,6 +65,7 @@ document.uploads.submit.addEventListener("click", function(){
         model.value != "" && 
         regExPrice.test(price.value) && 
         size.value != "" ){
+        alert("SUCCESS");
         enableSubmit();
     }else if (brand.value == ""){
         preventSubmit();
