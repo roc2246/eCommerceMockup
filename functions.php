@@ -99,8 +99,10 @@ function getInventory() {
     if(!$result) {
         die('Query FAILED' . mysqli_error($connection));
     }
-        
+    $i = -1;       
 while($row = mysqli_fetch_assoc($result)) {
+        
+        $i++;
         $product = "<div class='item'>";
 
         if ($row['image'] == ''){
@@ -112,7 +114,7 @@ while($row = mysqli_fetch_assoc($result)) {
         $product.= "Model: " . $row['model'] . "<br>";
         $product.= "Size: " . $row['size'] . "<br>";
         $product.= "Price: $" . $row['price'] . "<br>";
-        $product.= "<a href=''>Add to Cart</a>";
+        $product.= "<button onclick='toCart(". $i .")'>Add to Cart</button>";
         $product.="</div>";
         echo $product;
     }  

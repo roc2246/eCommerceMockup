@@ -35,8 +35,29 @@
 </div>
 
 </div>
+<script>
 
-<script src="dropdownScript.js"></script>
+
+function toCart(i){
+document.getElementById("cartParent").style.borderColor = "red";  
+
+//creates item placed in cart
+var cartItem = document.createElement("li");
+
+var inventory = document.getElementsByClassName("item");
+
+cartItem.innerHTML= inventory[i].innerHTML;
+document.getElementById("cart").appendChild(cartItem);
+
+console.log(cartItem.childNodes[10]);
+
+}
+
+
+</script>
+
+
+
 
 
 </body>
