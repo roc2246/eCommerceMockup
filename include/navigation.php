@@ -24,8 +24,8 @@
 			</ul> 
 		</li>
 
-		<li class="category" onmouseover="revealCat(4)" onmouseleave="hideCat(4)">Cart
-			<ul>
+		<li class="category" id="cartParent" onmouseover="revealCat(4)" onmouseleave="hideCat(4)">Cart
+			<ul id="cart">
 
 			</ul> 
 		</li>
@@ -33,8 +33,4 @@
 </ul>
 </navigation>
 
-<script>
-
-
-
-</script>
+<script src="dropdownScript.js"></script>

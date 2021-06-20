@@ -112,7 +112,7 @@ while($row = mysqli_fetch_assoc($result)) {
         $product.= "Model: " . $row['model'] . "<br>";
         $product.= "Size: " . $row['size'] . "<br>";
         $product.= "Price: $" . $row['price'] . "<br>";
-        $product.= "<a href=''>Add to Cart</a>";
+        $product.= "<button onclick='toCart()'>Add to Cart</button>";
         $product.="</div>";
         echo $product;
     }  
