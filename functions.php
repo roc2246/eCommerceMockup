@@ -99,6 +99,7 @@ function getInventory() {
     if(!$result) {
         die('Query FAILED' . mysqli_error($connection));
     }
+    
     $i = -1;       
 while($row = mysqli_fetch_assoc($result)) {
         

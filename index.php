@@ -10,6 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
    
+<script>
+function removeItem(purNo){
+    var cartItem = document.getElementsByClassName("cart-item");
+    document.getElementById("cart").removeChild(cartItem[purNo]);
+    c--;
+    console.log(c);
+}
+</script>
+
     <title>The Condo</title>
 </head>
 <body onload="hideSubCats()">
@@ -36,8 +45,8 @@
 
 </div>
 <script>
-var c = 0;
-console.log(c);
+var c = -1;
+
 function toCart(i){
     c++;
 document.getElementById("cartParent").style.borderColor = "red";  
@@ -50,20 +59,22 @@ var inventory = document.getElementsByClassName("item");
 
 cartItem.innerHTML= inventory[i].innerHTML;
 
-cartItem.childNodes[10].remove();
 
+
+//Replace "Add to cart" with "Remove Item"
+cartItem.childNodes[10].remove();
 var removeBttn = document.createElement("button");
 removeBttn.innerHTML = "Remove Item";
-removeBttn.onclick = function(){
-    document.getElementById("cart").removeChild(document.getElementById("cart").childNodes[c]);
-c--;
-}
+
+removeBttn.setAttribute("onclick", "removeItem("+ c + ")");
 cartItem.appendChild(removeBttn);
 
 document.getElementById("cart").appendChild(cartItem);
-
+console.log(c);
 
 }
+
+
 
 
 </script>
