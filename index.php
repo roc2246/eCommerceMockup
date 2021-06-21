@@ -47,9 +47,14 @@ var cartItem = document.createElement("li");
 var inventory = document.getElementsByClassName("item");
 
 cartItem.innerHTML= inventory[i].innerHTML;
+
+var removeBttn = cartItem.childNodes[10];
+removeBttn.innerHTML = "Remove Item";
+removeBttn.removeAttribute("onclick");
+
 document.getElementById("cart").appendChild(cartItem);
 
-console.log(cartItem.childNodes[10]);
+console.log(removeBttn);
 
 }
 
