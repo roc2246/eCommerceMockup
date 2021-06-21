@@ -11,12 +11,20 @@
     <link rel="stylesheet" href="style.css">
    
 <script>
-function removeItem(purNo){
+function removeItem(c){
     var cartItem = document.getElementsByClassName("cart-item");
-    document.getElementById("cart").removeChild(cartItem[purNo]);
+    document.getElementById("cart").removeChild(cartItem[c]);
     c--;
     console.log(c);
 }
+
+function cartItemNo(){
+
+            return c;
+    }
+
+
+
 </script>
 
     <title>The Condo</title>
@@ -65,8 +73,9 @@ cartItem.innerHTML= inventory[i].innerHTML;
 cartItem.childNodes[10].remove();
 var removeBttn = document.createElement("button");
 removeBttn.innerHTML = "Remove Item";
+removeBttn.className = "remove-button";
 
-removeBttn.setAttribute("onclick", "removeItem("+ c + ")");
+removeBttn.setAttribute("onclick", "removeItem("+ cartItemNo() + ")");
 cartItem.appendChild(removeBttn);
 
 document.getElementById("cart").appendChild(cartItem);
