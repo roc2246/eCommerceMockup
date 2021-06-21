@@ -36,25 +36,32 @@
 
 </div>
 <script>
-
-
+var c = 0;
+console.log(c);
 function toCart(i){
+    c++;
 document.getElementById("cartParent").style.borderColor = "red";  
 
 //creates item placed in cart
 var cartItem = document.createElement("li");
+cartItem.className = "cart-item";
 
 var inventory = document.getElementsByClassName("item");
 
 cartItem.innerHTML= inventory[i].innerHTML;
 
-var removeBttn = cartItem.childNodes[10];
+cartItem.childNodes[10].remove();
+
+var removeBttn = document.createElement("button");
 removeBttn.innerHTML = "Remove Item";
-removeBttn.removeAttribute("onclick");
+removeBttn.onclick = function(){
+    document.getElementById("cart").removeChild(document.getElementById("cart").childNodes[c]);
+c--;
+}
+cartItem.appendChild(removeBttn);
 
 document.getElementById("cart").appendChild(cartItem);
 
-console.log(removeBttn);
 
 }
 
