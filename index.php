@@ -11,19 +11,16 @@
     <link rel="stylesheet" href="style.css">
    
 <script>
+var c = -1;
+
 function removeItem(c){
     var cartItem = document.getElementsByClassName("cart-item");
     document.getElementById("cart").removeChild(cartItem[c]);
-    c--;
-    console.log(c);
 }
 
-function cartItemNo(){
-
-            return c;
-    }
-
-
+function RIpara (){
+    return c;
+}
 
 </script>
 
@@ -53,32 +50,35 @@ function cartItemNo(){
 
 </div>
 <script>
-var c = -1;
+
 
 function toCart(i){
     c++;
+  
 document.getElementById("cartParent").style.borderColor = "red";  
 
 //creates item placed in cart
 var cartItem = document.createElement("li");
 cartItem.className = "cart-item";
-
 var inventory = document.getElementsByClassName("item");
-
 cartItem.innerHTML= inventory[i].innerHTML;
 
 
 
 //Replace "Add to cart" with "Remove Item"
-cartItem.childNodes[10].remove();
-var removeBttn = document.createElement("button");
-removeBttn.innerHTML = "Remove Item";
-removeBttn.className = "remove-button";
+function removeBttn(){
+  cartItem.childNodes[10].remove();
+  var removeBttn = document.createElement("button");
+  removeBttn.innerHTML = "Remove Item";
+  removeBttn.className = "remove-button";
 
-removeBttn.setAttribute("onclick", "removeItem("+ cartItemNo() + ")");
-cartItem.appendChild(removeBttn);
-
+  removeBttn.setAttribute("onclick", "removeItem("+ RIpara() + ")");
+  cartItem.appendChild(removeBttn);
+}
+removeBttn();
 document.getElementById("cart").appendChild(cartItem);
+
+console.log(cartItem);
 console.log(c);
 
 }
