@@ -19,7 +19,9 @@ function removeItem(c){
 }
 
 function RIpara (){
-    return c;
+ 
+        return c;
+    
 }
 
 </script>
