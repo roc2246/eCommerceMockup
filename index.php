@@ -74,7 +74,7 @@ function removeBttn(){
   removeBttn.innerHTML = "Remove Item";
   removeBttn.className = "remove-button";
 
-  removeBttn.setAttribute("onclick", "removeItem("+ RIpara() + ")");
+  removeBttn.setAttribute("onclick", "removeItem("+ RIpara() + "); c--;");
   cartItem.appendChild(removeBttn);
 }
 removeBttn();
