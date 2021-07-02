@@ -29,7 +29,7 @@ function RIpara (){
 <body onload="hideSubCats()">
 <header>
 <h1>The Condo</h1>
-<h4>Second-Rate Bardshop</h4>
+<h4>Second-Rate Boardshop</h4>
 </header>
 <?php include 'include/navigation.php' ?>
 
