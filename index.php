@@ -18,11 +18,18 @@ function removeItem(c){
     document.getElementById("cart").removeChild(cartItem[c]);
 }
 
-function RIpara (){
- 
-        return c;
-    
+function resetPara(){
+    var removeBttn = document.getElementsByClassName("remove-button");
+    for (c=0; c<=removeBttn.length; c++){
+        removeBttn[c].removeAttribute("onclick");
+        removeBttn[c].setAttribute("onclick", "removeItem("+ c + "); resetPara(); c--;");
+    }
+
+
+
+
 }
+
 
 </script>
 
@@ -74,11 +81,12 @@ function removeBttn(){
   removeBttn.innerHTML = "Remove Item";
   removeBttn.className = "remove-button";
 
-  removeBttn.setAttribute("onclick", "removeItem("+ RIpara() + "); c--;");
+  removeBttn.setAttribute("onclick", "removeItem("+ c + "); resetPara(); c--;");
   cartItem.appendChild(removeBttn);
 }
 removeBttn();
 document.getElementById("cart").appendChild(cartItem);
+
 
 console.log(cartItem);
 console.log(c);
