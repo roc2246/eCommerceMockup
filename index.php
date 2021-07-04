@@ -13,21 +13,17 @@
 <script>
 var c = -1;
 
-function removeItem(c){
+function removeItem(itemNo){
+    c--;
+
     var cartItem = document.getElementsByClassName("cart-item");
-    document.getElementById("cart").removeChild(cartItem[c]);
-}
+    document.getElementById("cart").removeChild(cartItem[itemNo]);
 
-function resetPara(){
+    //Resets input counter value    
     var removeBttn = document.getElementsByClassName("remove-button");
-    for (c=0; c<=removeBttn.length; c++){
-        removeBttn[c].removeAttribute("onclick");
-        removeBttn[c].setAttribute("onclick", "removeItem("+ c + "); resetPara(); c--;");
+    for (var b=0; b<=removeBttn.length; b++){
+        removeBttn[b].setAttribute("onclick", "removeItem("+ b + ");");
     }
-
-
-
-
 }
 
 
@@ -81,7 +77,7 @@ function removeBttn(){
   removeBttn.innerHTML = "Remove Item";
   removeBttn.className = "remove-button";
 
-  removeBttn.setAttribute("onclick", "removeItem("+ c + "); resetPara(); c--;");
+  removeBttn.setAttribute("onclick", "removeItem("+ c + ");");
   cartItem.appendChild(removeBttn);
 }
 removeBttn();
