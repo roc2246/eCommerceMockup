@@ -16,6 +16,9 @@ var c = -1;
 function removeItem(itemNo){
     c--;
 
+    var cart = document.getElementById("cart");
+    document.getElementById("count").innerHTML = cart.childElementCount - 1;
+
     var cartItem = document.getElementsByClassName("cart-item");
     document.getElementById("cart").removeChild(cartItem[itemNo]);
 
@@ -55,12 +58,11 @@ function removeItem(itemNo){
 
 </div>
 <script>
-
+document.getElementById("count").innerHTML = 0;
 
 function toCart(i){
     c++;
-  
-document.getElementById("cartParent").style.borderColor = "red";  
+
 
 //creates item placed in cart
 var cartItem = document.createElement("li");
@@ -82,13 +84,11 @@ function removeBttn(){
 }
 removeBttn();
 document.getElementById("cart").appendChild(cartItem);
+var cart = document.getElementById("cart");
 
-
-console.log(cartItem);
-console.log(c);
+document.getElementById("count").innerHTML = cart.childElementCount;
 
 }
-
 
 
 

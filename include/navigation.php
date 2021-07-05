@@ -24,7 +24,7 @@
 			</ul> 
 		</li>
 
-		<li class="category" id="cartParent" onmouseover="revealCat(4)" onmouseleave="hideCat(4)">Cart
+		<li class="category" id="cartParent" onmouseover="revealCat(4)" onmouseleave="hideCat(4)">Cart (<span id="count"></span> items)
 			<ul id="cart">
 
 			</ul> 
