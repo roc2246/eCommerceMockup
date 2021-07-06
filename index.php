@@ -136,14 +136,7 @@ window.onclick = function(event) {
 /*-------------------Data inside checkout window--------------------------------*/
 
 
-var cartItems = document.getElementById("cart").childNodes;
-var txt = "";
-var i;
-for (i = 0; i < cartItems.length; i++) {
-    txt = txt + cartItems[i].nodeName + "<br>";
-    document.getElementsByClassName("modal-content")[0].innerHTML = txt;
 
-  }
 
 
 
