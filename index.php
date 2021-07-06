@@ -107,7 +107,7 @@ document.getElementById("count").innerHTML = cart.childElementCount;
 }
 
 
-/*Chekcout Window*/
+/*-------------------Chekcout Window---------------------------------------------*/
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -132,6 +132,19 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+/*-------------------Data inside checkout window--------------------------------*/
+
+
+var cartItems = document.getElementById("cart").childNodes;
+var txt = "";
+var i;
+for (i = 0; i < cartItems.length; i++) {
+    txt = txt + cartItems[i].nodeName + "<br>";
+    document.getElementsByClassName("modal-content")[0].innerHTML = txt;
+
+  }
+
 
 
 </script>
