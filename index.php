@@ -71,7 +71,7 @@ function removeItem(itemNo){
 
 </div>
 <!---------------------------------------------------->
-
+<?php updateBasket();?>
 <script>
 document.getElementById("count").innerHTML = 0;
 
@@ -148,12 +148,12 @@ function compatibility() {
 }
 
 //Loads items in basket
-function loadPBasket(fileName) {
+function loadPBasket(url) {
   compatibility();
   xmlhttp.onreadystatechange = function() {
     trackResponse(setPS);
   };
-  xmlhttp.open("GET", "resources/xml/" + fileName, true);
+  xmlhttp.open("GET", url, true);
   xmlhttp.send();
 }
 
@@ -175,6 +175,21 @@ function setPS() {
         x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue +
         "<br>";
       }
+
+      //Waits for a server response, then calls a function
+function trackResponse(functName) {
+    //Keeps the 'Failed Request' message from displaying during the request
+    if (xmlhttp.readyState !=4){
+        return;
+    }
+    if (xmlhttp.status==200 && xmlhttp.readyState ==4) {
+        functName();
+    } else {
+        alert("Failed Request: " + xmlhttp.statusText);
+    }
+  }
+
+
 }
 </script>
 
