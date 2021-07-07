@@ -58,8 +58,7 @@ function removeItem(itemNo){
 
 </div>
 
-<!--Checkout Window -->
-<!-- Trigger/Open The Modal -->
+<!--Checkout Window----------------------------------->
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -67,11 +66,11 @@ function removeItem(itemNo){
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+    <div id="checkout-purchases"></div>
   </div>
 
 </div>
-
+<!---------------------------------------------------->
 
 <script>
 document.getElementById("count").innerHTML = 0;
@@ -79,6 +78,8 @@ document.getElementById("count").innerHTML = 0;
 function toCart(i){
     c++;
 
+//For debugging purposes    
+document.getElementById("checkout-purchases").innerText = "TEST";
 
 //creates item placed in cart
 var cartItem = document.createElement("li");
@@ -134,17 +135,48 @@ window.onclick = function(event) {
 }
 
 /*-------------------Data inside checkout window--------------------------------*/
+//Tracks the request
+var xmlhttp;
 
+//Checks if XMLHttpRequest is compatible with the browser
+function compatibility() {
+  if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+}
 
+//Loads items in basket
+function loadPBasket(fileName) {
+  compatibility();
+  xmlhttp.onreadystatechange = function() {
+    trackResponse(setPS);
+  };
+  xmlhttp.open("GET", "resources/xml/" + fileName, true);
+  xmlhttp.send();
+}
 
-
-
-
+//Sets basket items to checkout window
+function setPS() {
+  document.getElementById("bitsofinfo").innerHTML = " ";
+  var i;
+  var xmlDoc = xmlhttp.responseXML;
+  var x = xmlDoc.getElementsByTagName("item");
+  for (i = 0; i < x.length; i++) {
+      document.getElementById("bitsofinfo").innerHTML +=
+        "<span class = 'details'>"+
+        x[i].getElementsByTagName("brand")[0].childNodes[0].nodeValue +
+        "</span> " +
+        x[i].getElementsByTagName("model")[0].childNodes[0].nodeValue +
+        "</span> " +
+        x[i].getElementsByTagName("size")[0].childNodes[0].nodeValue +
+        "</span> " +
+        x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue +
+        "<br>";
+      }
+}
 </script>
-
-
-
-
 
 </body>
 </html>
