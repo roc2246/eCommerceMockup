@@ -58,8 +58,7 @@ function removeItem(itemNo){
 
 </div>
 
-<!--Checkout Window -->
-<!-- Trigger/Open The Modal -->
+<!--Checkout Window----------------------------------->
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -67,11 +66,11 @@ function removeItem(itemNo){
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+    <div id="checkout-purchases"></div>
   </div>
 
 </div>
-
+<!---------------------------------------------------->
 
 <script>
 document.getElementById("count").innerHTML = 0;
@@ -79,6 +78,8 @@ document.getElementById("count").innerHTML = 0;
 function toCart(i){
     c++;
 
+//For debugging purposes    
+document.getElementById("checkout-purchases").innerText = "TEST";
 
 //creates item placed in cart
 var cartItem = document.createElement("li");
@@ -134,17 +135,11 @@ window.onclick = function(event) {
 }
 
 /*-------------------Data inside checkout window--------------------------------*/
-
-
-
-
-
-
+var purchases = document.getElementsByClassName("cart-item");
+for(var p = 0; p<= purchases.length; p++){
+  var orderItems = purchases[p].innerText + "<br>";
+}
 </script>
-
-
-
-
 
 </body>
 </html>
