@@ -121,4 +121,20 @@ while($row = mysqli_fetch_assoc($result)) {
     }  
 }
 
+function updateBasket(){
+  $xmlBasket = "basket.xml";
+  if($handle = fopen($xmlBasket, 'w')){
+     fwrite($handle, 'TEST');
+
+
+    fclose($handle);
+  } else {
+    echo "The basket cannot be open.";
+  }
+
+
+
+
+}
+
 ?>

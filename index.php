@@ -71,15 +71,12 @@ function removeItem(itemNo){
 
 </div>
 <!---------------------------------------------------->
-
+<?php updateBasket();?>
 <script>
 document.getElementById("count").innerHTML = 0;
 
 function toCart(i){
     c++;
-
-//For debugging purposes    
-document.getElementById("checkout-purchases").innerText = "TEST";
 
 //creates item placed in cart
 var cartItem = document.createElement("li");
@@ -148,23 +145,31 @@ function compatibility() {
 }
 
 //Loads items in basket
-function loadPBasket(fileName) {
+function loadPBasket(url) {
   compatibility();
   xmlhttp.onreadystatechange = function() {
-    trackResponse(setPS);
+    //Keeps the 'Failed Request' message from displaying during the request
+    if (xmlhttp.readyState !=4){
+        return;
+    }
+    if (xmlhttp.status==200 && xmlhttp.readyState ==4) {
+        setPS();
+    } else {
+        alert("Failed Request: " + xmlhttp.statusText);
+    }
   };
-  xmlhttp.open("GET", "resources/xml/" + fileName, true);
+  xmlhttp.open("GET", url, true);
   xmlhttp.send();
 }
 
 //Sets basket items to checkout window
 function setPS() {
-  document.getElementById("bitsofinfo").innerHTML = " ";
+  document.getElementById("checkout-purchases").innerHTML = " ";
   var i;
   var xmlDoc = xmlhttp.responseXML;
   var x = xmlDoc.getElementsByTagName("item");
   for (i = 0; i < x.length; i++) {
-      document.getElementById("bitsofinfo").innerHTML +=
+      document.getElementById("checkout-purchases").innerHTML +=
         "<span class = 'details'>"+
         x[i].getElementsByTagName("brand")[0].childNodes[0].nodeValue +
         "</span> " +
@@ -175,7 +180,10 @@ function setPS() {
         x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue +
         "<br>";
       }
+
 }
+
+loadPBasket("basket.xml");
 </script>
 
 </body>
