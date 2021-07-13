@@ -71,7 +71,7 @@ function removeItem(itemNo){
 
 </div>
 <!---------------------------------------------------->
-<?php updateBasket();?>
+<?php //updateBasket();?>
 <script>
 document.getElementById("count").innerHTML = 0;
 
