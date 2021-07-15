@@ -114,5 +114,6 @@ document.getElementById("count").innerHTML = cart.childElementCount;
 
 </script>
 <script src="checkout.js"></script>
+<script src="ajax.js"></script>
 </body>
 </html>

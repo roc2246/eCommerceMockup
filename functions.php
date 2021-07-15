@@ -121,10 +121,13 @@ while($row = mysqli_fetch_assoc($result)) {
     }  
 }
 
+//May Delete later
 function updateBasket(){
   $xmlBasket = "basket.xml";
   if($handle = fopen($xmlBasket, 'w')){
-     fwrite($handle, 'TEST');
+    $data = "TEST";
+
+     fwrite($handle, $data);
 
 
     fclose($handle);
