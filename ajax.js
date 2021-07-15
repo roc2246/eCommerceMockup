@@ -36,41 +36,30 @@ function setPS() {
   var i;
   var xmlDoc = xmlhttp.responseXML;
   var x = xmlDoc.getElementsByTagName("item");
-  /*for (i = 0; i < x.length; i++) {
-      document.getElementById("checkout-purchases").innerHTML +=
-      "<table>"+
-        "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>"+
-        "<tr>"+
-          "<td>"+
-           x[i].getElementsByTagName("brand")[0].childNodes[0].nodeValue +
-           "</td> " +
-          "<td>"+
-           x[i].getElementsByTagName("model")[0].childNodes[0].nodeValue +
-           "</td> " +
-          "<td>"+
-            x[i].getElementsByTagName("size")[0].childNodes[0].nodeValue +
-            "</td> " +
-          "<td>"+
-            x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue +
-            "</td>"+
-        "</tr>" +
-        "</table>"
-        ;
-      }*/
-     // x[0].getElementsByTagName("brand")[0].childNodes[0].nodeValue = "Burton";
-     // document.getElementById("checkout-purchases").innerHTML += x[0].getElementsByTagName("brand")[0].childNodes[0].nodeValue;
-
-      //TESTING
       for (i = 0; i < x.length; i++) {
         x[i].getElementsByTagName("brand")[0].childNodes[0].nodeValue = "Burton";
         x[i].getElementsByTagName("model")[0].childNodes[0].nodeValue = "Custom";
         x[i].getElementsByTagName("size")[0].childNodes[0].nodeValue = "155";
         x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue = "$250.00";
+
         document.getElementById("checkout-purchases").innerHTML +=
+        "<table>"+
+        "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>"+
+        "<tr>"+
+        "<td>"+
         x[i].getElementsByTagName("brand")[0].childNodes[0].nodeValue +
+        "</td> " +
+          "<td>"+
         x[i].getElementsByTagName("model")[0].childNodes[0].nodeValue +
+        "</td> " +
+          "<td>"+
         x[i].getElementsByTagName("size")[0].childNodes[0].nodeValue +
-        x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue;
+        "</td> " +
+          "<td>"+
+        x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue+
+        "</td> " +
+          "<td>"+
+          "</table>";
         
         }
 }
