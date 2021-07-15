@@ -106,6 +106,7 @@ removeBttn();
 document.getElementById("cart").appendChild(cartItem);
 var cart = document.getElementById("cart");
 
+//Counts amount of items in cart
 document.getElementById("count").innerHTML = cart.childElementCount;
 
 }
