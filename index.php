@@ -72,7 +72,6 @@ function removeItem(itemNo){
 </div>
 <!---------------------------------------------------->
 
-<?php //updateBasket();?><!--For Potentail AJAX-->
 <script>
 document.getElementById("count").innerHTML = 0; //counts number of items in cart
 
