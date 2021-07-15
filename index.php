@@ -75,11 +75,6 @@ function removeItem(itemNo){
 <script>
 document.getElementById("count").innerHTML = 0; //counts number of items in cart
 
-function checkoutItems(){
-document.getElementById("checkout-purchases").appendChild(cartItem);//For checkout window
-
-}
-
 function toCart(i){
     c++;
 
