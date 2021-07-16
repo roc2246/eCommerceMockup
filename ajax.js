@@ -35,6 +35,8 @@ function setPS() {
   document.getElementById("checkout-purchases").innerHTML = " ";
   var i;
   var xmlDoc = xmlhttp.responseXML;
+ // var newItem = xmlDoc.createElement("item");
+  //xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
   var x = xmlDoc.getElementsByTagName("item");
       for (i = 0; i < x.length; i++) {
         
