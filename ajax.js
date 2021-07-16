@@ -37,10 +37,10 @@ function setPS() {
   var xmlDoc = xmlhttp.responseXML;
   var x = xmlDoc.getElementsByTagName("item");
       for (i = 0; i < x.length; i++) {
-        x[i].getElementsByTagName("brand")[0].childNodes[0].nodeValue = "Burton";
-        x[i].getElementsByTagName("model")[0].childNodes[0].nodeValue = "Custom";
-        x[i].getElementsByTagName("size")[0].childNodes[0].nodeValue = "155";
-        x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue = "$250.00";
+        x[i].getElementsByTagName("brand")[0].childNodes[0].nodeValue = document.getElementsByClassName("brand")[0].innerHTML;
+        x[i].getElementsByTagName("model")[0].childNodes[0].nodeValue = document.getElementsByClassName("model")[0].innerHTML;
+        x[i].getElementsByTagName("size")[0].childNodes[0].nodeValue = document.getElementsByClassName("size")[0].innerHTML;
+        x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue = document.getElementsByClassName("price")[0].innerHTML;
 
         document.getElementById("checkout-purchases").innerHTML +=
         "<table>"+
@@ -64,4 +64,4 @@ function setPS() {
         }
 }
 
-loadPBasket("basket.xml");
+

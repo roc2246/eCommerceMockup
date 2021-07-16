@@ -111,11 +111,11 @@ while($row = mysqli_fetch_assoc($result)) {
         }else {
           $product.=  "<img src='uploads/" . $row['image'] . "' width='50px' height='120px'><br>";
         }
-        $product.= "Brand: " . $row['brand'] . "<br>";
-        $product.= "Model: " . $row['model'] . "<br>";
-        $product.= "Size: " . $row['size'] . "<br>";
-        $product.= "Price: $" . $row['price'] . "<br>";
-        $product.= "<button onclick='toCart(". $i .")'>Add to Cart</button>";
+        $product.= "Brand: <span class='brand'>" . $row['brand'] . "</span><br>";
+        $product.= "Model: <span class='model'>" . $row['model'] . "</span><br>";
+        $product.= "Size: <span class='size'>" . $row['size'] . "</span><br>";
+        $product.= "Price: <span class='price'>$" . $row['price'] . "</span><br>";
+        $product.= "<button onclick='toCart(". $i .");'>Add to Cart</button>";
         $product.="</div>";
         echo $product;
     }  
