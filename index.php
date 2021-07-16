@@ -87,22 +87,21 @@ cartItem.innerHTML= inventory[i].innerHTML;
 
 
 //Replace "Add to cart" with "Remove Item"
-function removeBttn(){
-  cartItem.childNodes[10].remove();
+  cartItem.childNodes[14].remove();
   var removeBttn = document.createElement("button");
   removeBttn.innerHTML = "Remove Item";
   removeBttn.className = "remove-button";
 
   removeBttn.setAttribute("onclick", "removeItem("+ c + ");");
   cartItem.appendChild(removeBttn);
-}
-removeBttn();
+
+
 document.getElementById("cart").appendChild(cartItem);
 var cart = document.getElementById("cart");
 
 //Counts amount of items in cart
 document.getElementById("count").innerHTML = cart.childElementCount;
-
+loadPBasket("basket.xml");
 }
 
 
