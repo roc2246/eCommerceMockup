@@ -101,6 +101,7 @@ var cart = document.getElementById("cart");
 
 //Counts amount of items in cart
 document.getElementById("count").innerHTML = cart.childElementCount;
+
 loadPBasket("basket.xml");
 }
 
