@@ -64,6 +64,7 @@ function setPS() {
           x[j].getElementsByTagName("size").innerHTML = " ";
           x[j].getElementsByTagName("price").innerHTML = " ";
         }else{
+          //maybe add for loop here once I figured out how to add multiple tag elements
           x[j].getElementsByTagName("brand").innerHTML = purBrand[k].innerHTML;
           x[j].getElementsByTagName("model").innerHTML = purModel[k].innerHTML;
           x[j].getElementsByTagName("size").innerHTML = purSize[k].innerHTML;
