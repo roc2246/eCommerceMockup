@@ -66,7 +66,7 @@ function removeItem(itemNo){
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <div id="checkout-purchases"></div>
+    <table id="checkout-purchases"></table>
   </div>
 
 </div>

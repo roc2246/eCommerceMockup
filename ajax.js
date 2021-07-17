@@ -32,10 +32,11 @@ function loadPBasket(url) {
 
 //Sets basket items to checkout window
 function setPS() {
-  document.getElementById("checkout-purchases").innerHTML = " ";
   var i;
-  var xmlDoc = xmlhttp.responseXML;       
-  xmlDoc.createElement("item");
+  var xmlDoc = xmlhttp.responseXML;  
+  var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
+  var newItem = xmlDoc.createElement("item");
+  xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
   var x = xmlDoc.getElementsByTagName("item");
       for (i = 0; i < x.length; i++) {
  
@@ -54,34 +55,23 @@ function setPS() {
         x[i].appendChild(size);
         x[i].appendChild(price);
 
-        x[i].childNodes[1].innerHTML = purBrand[0].innerHTML;
-        x[i].childNodes[2].innerHTML = purModel[0].innerHTML;
-        x[i].childNodes[3].innerHTML = purSize[0].innerHTML;
-        x[i].childNodes[4].innerHTML = purPrice[0].innerHTML;
+        x[i].getElementsByTagName("brand").innerHTML = purBrand[0].innerHTML;
+        x[i].getElementsByTagName("model").innerHTML = purModel[0].innerHTML;
+        x[i].getElementsByTagName("size").innerHTML = purSize[0].innerHTML;
+        x[i].getElementsByTagName("price").innerHTML = purPrice[0].innerHTML;
         
         //debugg
         console.log(xmlDoc.getElementsByTagName("basket")[0]);
 
-        document.getElementById("checkout-purchases").innerHTML +=
-        "<table>"+
-        "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>"+
+        table +=
         "<tr>"+
-        "<td>"+
-        x[i].childNodes[1].innerHTML +
-        "</td> " +
-          "<td>"+
-        x[i].childNodes[2].innerHTML +
-        "</td> " +
-          "<td>"+
-        x[i].childNodes[3].innerHTML +
-        "</td> " +
-          "<td>"+
-        x[i].childNodes[4].innerHTML+
-        "</td> " +
-          "<td>"+
-          "</table>";
-        
+        "<td>"+ x[i].getElementsByTagName("brand").innerHTML + "</td> " +
+        "<td>"+ x[i].getElementsByTagName("model").innerHTML + "</td> " +
+        "<td>"+ x[i].getElementsByTagName("size").innerHTML + "</td> " +
+        "<td>"+ x[i].getElementsByTagName("price").innerHTML+ "</td> " +
+        "</tr>";
         }
+        document.getElementById("checkout-purchases").innerHTML = table;
 }
 
 
