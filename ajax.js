@@ -66,6 +66,10 @@ function setPS() {
         //debugg
         console.log(xmlDoc.getElementsByTagName("basket")[0]);
 
+        
+        //debugg
+        console.log(x[i]);
+
         document.getElementById("checkout-purchases").innerHTML +=
         "<table>"+
         "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>"+
