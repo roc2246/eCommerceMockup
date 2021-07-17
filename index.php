@@ -15,7 +15,7 @@ var c = -1;
 
 function removeItem(itemNo){
     c--;
-
+    k--;//Counter for checkout items
     var cart = document.getElementById("cart");
     document.getElementById("count").innerHTML = cart.childElementCount - 1;
 
@@ -27,6 +27,8 @@ function removeItem(itemNo){
     for (var b=0; b<removeBttn.length; b++){
         removeBttn[b].setAttribute("onclick", "removeItem("+ b + ");");
     }
+loadPBasket("basket.xml");
+
 }
 
 
@@ -77,6 +79,7 @@ document.getElementById("count").innerHTML = 0; //counts number of items in cart
 
 function toCart(i){
     c++;
+    k++;//Counter for checkout items
 
 //creates item placed in cart
 var cartItem = document.createElement("li");
