@@ -11,11 +11,9 @@ function compatibility() {
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
 }
-var g = -1;//counter variable for checkout items
 
 //Loads items in basket
 function loadPBasket(url) {
-  g++;//counter variable for checkout items
   compatibility();
   xmlhttp.onreadystatechange = function() {
     //Keeps the 'Failed Request' message from displaying during the request
@@ -36,11 +34,9 @@ function loadPBasket(url) {
 function setPS() {
   document.getElementById("checkout-purchases").innerHTML = " ";
   var i;
-  var xmlDoc = xmlhttp.responseXML;
-  var newItem = xmlDoc.createElement("item");
-  xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
+  var xmlDoc = xmlhttp.responseXML;       
+  xmlDoc.createElement("item");
   var x = xmlDoc.getElementsByTagName("item");
-  console.log(g);
       for (i = 0; i < x.length; i++) {
  
         let brand = xmlDoc.createElement("brand");
