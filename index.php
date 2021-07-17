@@ -24,7 +24,7 @@ function removeItem(itemNo){
 
     //Resets input counter value    
     var removeBttn = document.getElementsByClassName("remove-button");
-    for (var b=0; b<=removeBttn.length; b++){
+    for (var b=0; b<removeBttn.length; b++){
         removeBttn[b].setAttribute("onclick", "removeItem("+ b + ");");
     }
 }
