@@ -58,6 +58,10 @@ function setPS() {
         x[i].childNodes[3].innerHTML = purSize[0].innerHTML;
         x[i].childNodes[4].innerHTML = purPrice[0].innerHTML;
 
+        
+        //debugg
+        console.log(x[i]);
+
         document.getElementById("checkout-purchases").innerHTML +=
         "<table>"+
         "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>"+
