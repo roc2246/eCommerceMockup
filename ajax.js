@@ -11,9 +11,11 @@ function compatibility() {
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
 }
+var g = -1;//counter variable for checkout items
 
 //Loads items in basket
 function loadPBasket(url) {
+  g++;//counter variable for checkout items
   compatibility();
   xmlhttp.onreadystatechange = function() {
     //Keeps the 'Failed Request' message from displaying during the request
@@ -35,9 +37,12 @@ function setPS() {
   document.getElementById("checkout-purchases").innerHTML = " ";
   var i;
   var xmlDoc = xmlhttp.responseXML;
+  var newItem = xmlDoc.createElement("item");
+  xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
   var x = xmlDoc.getElementsByTagName("item");
+  console.log(g);
       for (i = 0; i < x.length; i++) {
-        
+ 
         let brand = xmlDoc.createElement("brand");
         let model = xmlDoc.createElement("model");
         let size = xmlDoc.createElement("size");
@@ -57,6 +62,9 @@ function setPS() {
         x[i].childNodes[2].innerHTML = purModel[0].innerHTML;
         x[i].childNodes[3].innerHTML = purSize[0].innerHTML;
         x[i].childNodes[4].innerHTML = purPrice[0].innerHTML;
+        
+        //debugg
+        console.log(xmlDoc.getElementsByTagName("basket")[0]);
 
         document.getElementById("checkout-purchases").innerHTML +=
         "<table>"+
