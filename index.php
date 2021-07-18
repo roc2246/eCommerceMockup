@@ -24,6 +24,7 @@ function removeItem(itemNo){
 
     var cartItem = document.getElementsByClassName("cart-item");
     document.getElementById("cart").removeChild(cartItem[itemNo]);
+    removeCOItem(1);
 
     //Resets input counter value    
     var removeBttn = document.getElementsByClassName("remove-button");
