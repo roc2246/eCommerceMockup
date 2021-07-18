@@ -38,7 +38,9 @@ function newItem(){
   var xmlDoc = xmlhttp.responseXML;  
   var newItem = xmlDoc.createElement("item");
   xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
-  
+
+  //Debugg
+  console.log( xmlDoc.getElementsByTagName("basket")[0]);
 }
 
 //Removes item from checkout window
@@ -47,6 +49,9 @@ function removeCOItem(test){
   var xmlDoc = xmlhttp.responseXML;  
   var selectedItem = xmlDoc.getElementsByTagName("item");
   xmlDoc.getElementsByTagName("basket")[0].removeChild(selectedItem[test]);
+
+  //debugg
+  console.log( xmlDoc.getElementsByTagName("basket")[0]);
   
 }
 
