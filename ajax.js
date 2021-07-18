@@ -32,25 +32,45 @@ function loadPBasket(url) {
 
 var k = -1;//Counter for checkout items
 
+//Adds item to checkout window
+function newItem(){
+  k++;//Counter for checkout items
+  var xmlDoc = xmlhttp.responseXML;  
+  var newItem = xmlDoc.createElement("item");
+  xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
+  
+}
+
+//Removes item from checkout window
+function removeCOItem(test){
+  k--;//Counter for checkout items
+  var xmlDoc = xmlhttp.responseXML;  
+  var selectedItem = xmlDoc.getElementsByTagName("item");
+  xmlDoc.getElementsByTagName("basket")[0].removeChild(selectedItem[test]);
+  
+}
+
 //Sets basket items to checkout window
 function setPS() {
   var j;
   var xmlDoc = xmlhttp.responseXML;  
   var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
-  var newItem = xmlDoc.createElement("item");
-  xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
   var x = xmlDoc.getElementsByTagName("item");
+
+  //Creates catregories for each checkout item
+  let brand = xmlDoc.createElement("brand");
+  let model = xmlDoc.createElement("model");
+  let size = xmlDoc.createElement("size");
+  let price = xmlDoc.createElement("price");
+
+  //Retrieves categories for each item
+  let purBrand = document.getElementsByClassName("brand");
+  let purModel = document.getElementsByClassName("model");
+  let purSize= document.getElementsByClassName("size");
+  let purPrice = document.getElementsByClassName("price");
+
+
       for (j = 0; j < x.length; j++) {
-
-        let brand = xmlDoc.createElement("brand");
-        let model = xmlDoc.createElement("model");
-        let size = xmlDoc.createElement("size");
-        let price = xmlDoc.createElement("price");
-
-        let purBrand = document.getElementsByClassName("brand");
-        let purModel = document.getElementsByClassName("model");
-        let purSize= document.getElementsByClassName("size");
-        let purPrice = document.getElementsByClassName("price");
 
         x[j].appendChild(brand);
         x[j].appendChild(model);
@@ -80,7 +100,6 @@ function setPS() {
         "</tr>";
         }
         document.getElementById("checkout-purchases").innerHTML = table;
-console.log(k);//debugg
 
 }
 

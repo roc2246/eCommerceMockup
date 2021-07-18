@@ -10,12 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="#">
+<script src="ajax.js"></script>
+
 <script>
+loadPBasket("basket.xml");
+
 var c = -1;
 
 function removeItem(itemNo){
     c--;
-    k--;//Counter for checkout items
     var cart = document.getElementById("cart");
     document.getElementById("count").innerHTML = cart.childElementCount - 1;
 
@@ -25,9 +28,8 @@ function removeItem(itemNo){
     //Resets input counter value    
     var removeBttn = document.getElementsByClassName("remove-button");
     for (var b=0; b<removeBttn.length; b++){
-        removeBttn[b].setAttribute("onclick", "removeItem("+ b + ");");
+        removeBttn[b].setAttribute("onclick", "removeItem("+ b + "); removeCOItem("+ b + ")");
     }
-loadPBasket("basket.xml");
 
 }
 
@@ -78,8 +80,8 @@ loadPBasket("basket.xml");
 document.getElementById("count").innerHTML = 0; //counts number of items in cart
 
 function toCart(i){
+newItem();
     c++;
-    k++;//Counter for checkout items
 
 //creates item placed in cart
 var cartItem = document.createElement("li");
@@ -95,7 +97,7 @@ cartItem.innerHTML= inventory[i].innerHTML;
   removeBttn.innerHTML = "Remove Item";
   removeBttn.className = "remove-button";
 
-  removeBttn.setAttribute("onclick", "removeItem("+ c + ");");
+  removeBttn.setAttribute("onclick", "removeItem("+ c + ");  removeCOItem("+ k + ")");
   cartItem.appendChild(removeBttn);
 
 
@@ -105,12 +107,10 @@ var cart = document.getElementById("cart");
 //Counts amount of items in cart
 document.getElementById("count").innerHTML = cart.childElementCount;
 
-loadPBasket("basket.xml");
 }
 
 
 </script>
 <script src="checkout.js"></script>
-<script src="ajax.js"></script>
 </body>
 </html>
