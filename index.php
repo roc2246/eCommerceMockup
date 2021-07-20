@@ -80,7 +80,6 @@ function removeItem(itemNo){
 document.getElementById("count").innerHTML = 0; //counts number of items in cart
 
 function toCart(i){
-newItem();
     c++;
 
 //creates item placed in cart
@@ -104,8 +103,16 @@ cartItem.innerHTML= inventory[i].innerHTML;
 document.getElementById("cart").appendChild(cartItem);
 var cart = document.getElementById("cart");
 
+//changes classes of item categories
+//console.log(document.getElementsByClassName("cart-item")[c]);
+document.getElementsByClassName("cart-item")[c].childNodes[3].className = "CIbrand";
+document.getElementsByClassName("cart-item")[c].childNodes[6].className = "CImodel";
+document.getElementsByClassName("cart-item")[c].childNodes[9].className = "CIsize";
+document.getElementsByClassName("cart-item")[c].childNodes[12].className = "CIprice";
+
 //Counts amount of items in cart
 document.getElementById("count").innerHTML = cart.childElementCount;
+newItem();
 
 }
 

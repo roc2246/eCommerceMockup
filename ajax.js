@@ -36,11 +36,49 @@ var k = -1;//Counter for checkout items
 function newItem(){
   k++;//Counter for checkout items
   var xmlDoc = xmlhttp.responseXML;  
+  
+  //Creates catregories for each checkout item
+  let brand = xmlDoc.createElement("brand");
+  let model = xmlDoc.createElement("model");
+  let size = xmlDoc.createElement("size");
+  let price = xmlDoc.createElement("price");
+
+  //Retrieves categories for each item
+  let purBrand = document.getElementsByClassName("CIbrand");
+  let purModel = document.getElementsByClassName("CImodel");
+  let purSize= document.getElementsByClassName("CIsize");
+  let purPrice = document.getElementsByClassName("CIprice");
+
+  //Creates new Checkout Item Tag for XML
   var newItem = xmlDoc.createElement("item");
+  var item = xmlDoc.getElementsByTagName("item");
+
+  //Edit Later
+  newItem.appendChild(brand);
+  newItem.appendChild(model);
+  newItem.appendChild(size);
+  newItem.appendChild(price);
+
   xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
+
+  //Conditional to prevent console errors
+  if (k <= -1){
+    item[k].getElementsByTagName("brand")[0].innerHTML = " ";
+    item[k].getElementsByTagName("model")[0].innerHTML = " ";
+    item[k].getElementsByTagName("size")[0].innerHTML = " ";
+    item[k].getElementsByTagName("price")[0].innerHTML = " ";
+  }else{
+    //maybe add for loop here once I figured out how to add multiple tag elements
+    item[k].getElementsByTagName("brand")[0].innerHTML = purBrand[k].innerHTML;
+    item[k].getElementsByTagName("model")[0].innerHTML = purModel[k].innerHTML;
+    item[k].getElementsByTagName("size")[0].innerHTML = purSize[k].innerHTML;
+    item[k].getElementsByTagName("price")[0].innerHTML = purPrice[k].innerHTML;
+  }
+
 
   //Debugg
   console.log( xmlDoc.getElementsByTagName("basket")[0]);
+  console.log(k);
 }
 
 //Removes item from checkout window
@@ -52,7 +90,7 @@ function removeCOItem(test){
 
   //debugg
   console.log( xmlDoc.getElementsByTagName("basket")[0]);
-  
+  console.log(k);
 }
 
 //Sets basket items to checkout window
@@ -62,39 +100,7 @@ function setPS() {
   var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
   var x = xmlDoc.getElementsByTagName("item");
 
-  //Creates catregories for each checkout item
-  let brand = xmlDoc.createElement("brand");
-  let model = xmlDoc.createElement("model");
-  let size = xmlDoc.createElement("size");
-  let price = xmlDoc.createElement("price");
-
-  //Retrieves categories for each item
-  let purBrand = document.getElementsByClassName("brand");
-  let purModel = document.getElementsByClassName("model");
-  let purSize= document.getElementsByClassName("size");
-  let purPrice = document.getElementsByClassName("price");
-
-
       for (j = 0; j < x.length; j++) {
-
-        x[j].appendChild(brand);
-        x[j].appendChild(model);
-        x[j].appendChild(size);
-        x[j].appendChild(price);
-
-        //Conditional to prevent console errors
-        if (k <= -1){
-          x[j].getElementsByTagName("brand").innerHTML = " ";
-          x[j].getElementsByTagName("model").innerHTML = " ";
-          x[j].getElementsByTagName("size").innerHTML = " ";
-          x[j].getElementsByTagName("price").innerHTML = " ";
-        }else{
-          //maybe add for loop here once I figured out how to add multiple tag elements
-          x[j].getElementsByTagName("brand").innerHTML = purBrand[k].innerHTML;
-          x[j].getElementsByTagName("model").innerHTML = purModel[k].innerHTML;
-          x[j].getElementsByTagName("size").innerHTML = purSize[k].innerHTML;
-          x[j].getElementsByTagName("price").innerHTML = purPrice[k].innerHTML;
-        }
 
         table +=
         "<tr>"+
