@@ -103,13 +103,12 @@ function setPS() {
 
         table +=
         "<tr>"+
-        "<td>"+ x[j].getElementsByTagName("brand").innerHTML + "</td> " +
-        "<td>"+ x[j].getElementsByTagName("model").innerHTML + "</td> " +
-        "<td>"+ x[j].getElementsByTagName("size").innerHTML + "</td> " +
-        "<td>"+ x[j].getElementsByTagName("price").innerHTML+ "</td> " +
+        "<td>"+ x[j].getElementsByTagName("brand")[0].innerHTML + "</td> " +
+        "<td>"+ x[j].getElementsByTagName("model")[0].innerHTML + "</td> " +
+        "<td>"+ x[j].getElementsByTagName("size")[0].innerHTML + "</td> " +
+        "<td>"+ x[j].getElementsByTagName("price")[0].innerHTML+ "</td> " +
         "</tr>";
         }
         document.getElementById("checkout-purchases").innerHTML = table;
-
 }
 
