@@ -34,7 +34,6 @@ var k = -1;//Counter for checkout items
 
 //Adds item to checkout window
 function newItem(){
-  k++;//Counter for checkout items
   var xmlDoc = xmlhttp.responseXML;  
   
   //Creates catregories for each checkout item

@@ -81,7 +81,7 @@ document.getElementById("count").innerHTML = 0; //counts number of items in cart
 
 function toCart(i){
     c++;
-
+    k++;//Counter for checkout items
 //creates item placed in cart
 var cartItem = document.createElement("li");
 cartItem.className = "cart-item";
@@ -104,7 +104,6 @@ document.getElementById("cart").appendChild(cartItem);
 var cart = document.getElementById("cart");
 
 //changes classes of item categories
-//console.log(document.getElementsByClassName("cart-item")[c]);
 document.getElementsByClassName("cart-item")[c].childNodes[3].className = "CIbrand";
 document.getElementsByClassName("cart-item")[c].childNodes[6].className = "CImodel";
 document.getElementsByClassName("cart-item")[c].childNodes[9].className = "CIsize";
