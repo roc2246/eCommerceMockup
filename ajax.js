@@ -67,7 +67,6 @@ function newItem(){
     item[k].getElementsByTagName("size")[0].innerHTML = " ";
     item[k].getElementsByTagName("price")[0].innerHTML = " ";
   }else{
-    //maybe add for loop here once I figured out how to add multiple tag elements
     item[k].getElementsByTagName("brand")[0].innerHTML = purBrand[k].innerHTML;
     item[k].getElementsByTagName("model")[0].innerHTML = purModel[k].innerHTML;
     item[k].getElementsByTagName("size")[0].innerHTML = purSize[k].innerHTML;
