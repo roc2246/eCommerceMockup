@@ -36,7 +36,28 @@ var k = -1;//Counter for checkout items
 function newItem(){
   k++;//Counter for checkout items
   var xmlDoc = xmlhttp.responseXML;  
+  
+  //Creates catregories for each checkout item
+  let brand = xmlDoc.createElement("brand");
+  let model = xmlDoc.createElement("model");
+  let size = xmlDoc.createElement("size");
+  let price = xmlDoc.createElement("price");
+
+  //Retrieves categories for each item
+  let purBrand = document.getElementsByClassName("brand");
+  let purModel = document.getElementsByClassName("model");
+  let purSize= document.getElementsByClassName("size");
+  let purPrice = document.getElementsByClassName("price");
+
+  //Creates new Checkout Item Tag for XML
   var newItem = xmlDoc.createElement("item");
+
+  //Edit Later
+  newItem.appendChild(brand);
+  newItem.appendChild(model);
+  newItem.appendChild(size);
+  newItem.appendChild(price);
+
   xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
 
   //Debugg
@@ -77,6 +98,7 @@ function setPS() {
 
       for (j = 0; j < x.length; j++) {
 
+        //Edit Later
         x[j].appendChild(brand);
         x[j].appendChild(model);
         x[j].appendChild(size);
