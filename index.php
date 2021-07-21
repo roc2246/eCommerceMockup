@@ -29,6 +29,7 @@ function removeItem(itemNo){
     var removeBttn = document.getElementsByClassName("remove-button");
     for (var b=0; b<removeBttn.length; b++){
         removeBttn[b].setAttribute("onclick", "removeItem("+ b + "); removeCOItem("+ b + ")");
+        document.getElementsByClassName("XbuttonCO")[b].setAttribute("onclick", "removeItem("+ b + "); removeCOItem("+ b + ")");
     }
 
 }
@@ -100,6 +101,7 @@ cartItem.innerHTML= inventory[i].innerHTML;
   cartItem.appendChild(removeBttn);
 
 
+
 document.getElementById("cart").appendChild(cartItem);
 var cart = document.getElementById("cart");
 
@@ -111,7 +113,9 @@ document.getElementsByClassName("cart-item")[c].childNodes[12].className = "CIpr
 
 //Counts amount of items in cart
 document.getElementById("count").innerHTML = cart.childElementCount;
+
 newItem();
+//document.getElementById("XbuttonCO").setAttribute("onclick", "removeItem("+ c + ");  removeCOItem("+ k + ")");
 
 }
 
