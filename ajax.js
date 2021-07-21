@@ -77,16 +77,12 @@ for(var g = 0; g<item.length; g++){
       "<td>"+ item[g].getElementsByTagName("model")[0].innerHTML + "</td> " +
       "<td>"+ item[g].getElementsByTagName("size")[0].innerHTML + "</td> " +
       "<td>"+ item[g].getElementsByTagName("price")[0].innerHTML+ "</td> " +
-    "</tr>";
+      "<td class='XbuttonCO close' onclick='removeItem("+ g + "); removeCOItem("+ g + ")'>X</td>"+
+      "</tr>";
 }
     document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 
-  //Debugg
-  console.log(table);
- console.log(document.getElementsByClassName("order-list"));
-  console.log( xmlDoc.getElementsByTagName("basket")[0]);
-  console.log(k);
 }
 
 //Removes item from checkout window
@@ -112,18 +108,13 @@ if (selectedItem.length == 0){
         "<td>"+ selectedItem[z].getElementsByTagName("model")[0].innerHTML + "</td> " +
         "<td>"+ selectedItem[z].getElementsByTagName("size")[0].innerHTML + "</td> " +
         "<td>"+ selectedItem[z].getElementsByTagName("price")[0].innerHTML+ "</td> " +
-        "</tr>";
+      "<td class='XbuttonCO close' onclick='removeItem("+ z + "); removeCOItem("+ z + ")'>X</td>"+
+      "</tr>";
   }
 }
         document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 
-
-   //Debugg
-  console.log(table);
-  console.log(document.getElementsByClassName("order-list"));
- console.log( xmlDoc.getElementsByTagName("basket")[0]);
- console.log(k);
 }
 
 //Sets basket items to checkout window
