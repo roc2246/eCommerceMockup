@@ -89,6 +89,7 @@ function newItem(){
   //Debugg
  console.log(document.getElementsByClassName("order-list"));
   console.log( xmlDoc.getElementsByTagName("basket")[0]);
+  console.log(table);
   console.log(k);
 }
 
