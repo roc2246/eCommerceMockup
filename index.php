@@ -15,10 +15,10 @@
 <script>
 loadPBasket("basket.xml");
 
-var c = -1;
+var c = -1;//Counter for cart items
 
 function removeItem(itemNo){
-    c--;
+    c--;//Counter for cart items
     var cart = document.getElementById("cart");
     document.getElementById("count").innerHTML = cart.childElementCount - 1;
 
@@ -80,40 +80,38 @@ function removeItem(itemNo){
 document.getElementById("count").innerHTML = 0; //counts number of items in cart
 
 function toCart(i){
-    c++;
-    k++;//Counter for checkout items
-//creates item placed in cart
-var cartItem = document.createElement("li");
-cartItem.className = "cart-item";
-var inventory = document.getElementsByClassName("item");
-cartItem.innerHTML= inventory[i].innerHTML;
+  c++;//Counter for cart items
+  k++;//Counter for checkout items
 
+  //creates item placed in cart
+  var cartItem = document.createElement("li");
+  cartItem.className = "cart-item";
+  var inventory = document.getElementsByClassName("item");
+  cartItem.innerHTML= inventory[i].innerHTML;
 
-
-//Replace "Add to cart" with "Remove Item"
+  //Replace "Add to cart" with "Remove Item"
   cartItem.childNodes[14].remove();
   var removeBttn = document.createElement("button");
   removeBttn.innerHTML = "Remove Item";
   removeBttn.className = "remove-button";
-
   removeBttn.setAttribute("onclick", "removeItem("+ c + ");  removeCOItem("+ k + ")");
   cartItem.appendChild(removeBttn);
 
+  //Adds item to cart
+  document.getElementById("cart").appendChild(cartItem);
+  var cart = document.getElementById("cart");
 
+  //changes classes of item categories
+  document.getElementsByClassName("cart-item")[c].childNodes[3].className = "CIbrand";
+  document.getElementsByClassName("cart-item")[c].childNodes[6].className = "CImodel";
+  document.getElementsByClassName("cart-item")[c].childNodes[9].className = "CIsize";
+  document.getElementsByClassName("cart-item")[c].childNodes[12].className = "CIprice";
 
-document.getElementById("cart").appendChild(cartItem);
-var cart = document.getElementById("cart");
+  //Counts amount of items in cart
+  document.getElementById("count").innerHTML = cart.childElementCount;
 
-//changes classes of item categories
-document.getElementsByClassName("cart-item")[c].childNodes[3].className = "CIbrand";
-document.getElementsByClassName("cart-item")[c].childNodes[6].className = "CImodel";
-document.getElementsByClassName("cart-item")[c].childNodes[9].className = "CIsize";
-document.getElementsByClassName("cart-item")[c].childNodes[12].className = "CIprice";
-
-//Counts amount of items in cart
-document.getElementById("count").innerHTML = cart.childElementCount;
-
-newItem();
+  //Adds new item to checkout screen using AJAX
+  newItem();
 }
 
 
