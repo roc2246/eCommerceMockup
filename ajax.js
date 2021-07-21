@@ -33,12 +33,13 @@ function loadPBasket(url) {
 var k = -1;//Counter for checkout items
 
 //For checkoput screen
-var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
+var table = " ";     
 
 //Adds item to checkout window
 function newItem(){
   var xmlDoc = xmlhttp.responseXML;  
-  
+var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
+
   //Creates catregories for each checkout item
   let brand = xmlDoc.createElement("brand");
   let model = xmlDoc.createElement("model");
@@ -63,30 +64,26 @@ function newItem(){
 
   xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
 
-  //Conditional to prevent console errors
-  if (k <= -1){
-    item[k].getElementsByTagName("brand")[0].innerHTML = " ";
-    item[k].getElementsByTagName("model")[0].innerHTML = " ";
-    item[k].getElementsByTagName("size")[0].innerHTML = " ";
-    item[k].getElementsByTagName("price")[0].innerHTML = " ";
-  }else{
     item[k].getElementsByTagName("brand")[0].innerHTML = purBrand[k].innerHTML;
     item[k].getElementsByTagName("model")[0].innerHTML = purModel[k].innerHTML;
     item[k].getElementsByTagName("size")[0].innerHTML = purSize[k].innerHTML;
     item[k].getElementsByTagName("price")[0].innerHTML = purPrice[k].innerHTML;
-  }
+  
 ///////////////////////////////////////////////////Test
+for(var g = 0; g<item.length; g++){
     table +=
     "<tr class='order-list'>"+
-      "<td>"+ item[k].getElementsByTagName("brand")[0].innerHTML + "</td> " +
-      "<td>"+ item[k].getElementsByTagName("model")[0].innerHTML + "</td> " +
-      "<td>"+ item[k].getElementsByTagName("size")[0].innerHTML + "</td> " +
-      "<td>"+ item[k].getElementsByTagName("price")[0].innerHTML+ "</td> " +
+      "<td>"+ item[g].getElementsByTagName("brand")[0].innerHTML + "</td> " +
+      "<td>"+ item[g].getElementsByTagName("model")[0].innerHTML + "</td> " +
+      "<td>"+ item[g].getElementsByTagName("size")[0].innerHTML + "</td> " +
+      "<td>"+ item[g].getElementsByTagName("price")[0].innerHTML+ "</td> " +
     "</tr>";
+}
     document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 
   //Debugg
+  console.log(table);
  console.log(document.getElementsByClassName("order-list"));
   console.log( xmlDoc.getElementsByTagName("basket")[0]);
   console.log(k);
@@ -102,28 +99,35 @@ function removeCOItem(test){
   //Subtract item from table
   document.getElementsByClassName("order-list")[test].remove();
 
+var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
+
+  ///////////////////////////////////////////////////Test
+if (selectedItem.length == 0){
+  table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";
+}else{
+  for(var z = 0; z<selectedItem.length; z++){
+        table +=
+        "<tr class='order-list'>"+
+        "<td>"+ selectedItem[z].getElementsByTagName("brand")[0].innerHTML + "</td> " +
+        "<td>"+ selectedItem[z].getElementsByTagName("model")[0].innerHTML + "</td> " +
+        "<td>"+ selectedItem[z].getElementsByTagName("size")[0].innerHTML + "</td> " +
+        "<td>"+ selectedItem[z].getElementsByTagName("price")[0].innerHTML+ "</td> " +
+        "</tr>";
+  }
+}
+        document.getElementById("checkout-purchases").innerHTML = table;
+//////////////////////////////
+
+
    //Debugg
- console.log(document.getElementsByClassName("order-list"));
+  console.log(table);
+  console.log(document.getElementsByClassName("order-list"));
  console.log( xmlDoc.getElementsByTagName("basket")[0]);
  console.log(k);
 }
 
 //Sets basket items to checkout window
-function setPS() {
-  var j;
-  var xmlDoc = xmlhttp.responseXML;  
-  var x = xmlDoc.getElementsByTagName("item");
-
-     /* for (j = 0; j < x.length; j++) {
-
-        table +=
-        "<tr class='order-list'>"+
-        "<td>"+ x[j].getElementsByTagName("brand")[0].innerHTML + "</td> " +
-        "<td>"+ x[j].getElementsByTagName("model")[0].innerHTML + "</td> " +
-        "<td>"+ x[j].getElementsByTagName("size")[0].innerHTML + "</td> " +
-        "<td>"+ x[j].getElementsByTagName("price")[0].innerHTML+ "</td> " +
-        "</tr>";
-        }*/
+function setPS() {  
         document.getElementById("checkout-purchases").innerHTML = table;
 }
 
