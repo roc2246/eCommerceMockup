@@ -32,6 +32,9 @@ function loadPBasket(url) {
 
 var k = -1;//Counter for checkout items
 
+//For checkoput screen
+var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
+
 //Adds item to checkout window
 function newItem(){
   var xmlDoc = xmlhttp.responseXML;  
@@ -72,9 +75,19 @@ function newItem(){
     item[k].getElementsByTagName("size")[0].innerHTML = purSize[k].innerHTML;
     item[k].getElementsByTagName("price")[0].innerHTML = purPrice[k].innerHTML;
   }
-
+///////////////////////////////////////////////////Test
+    table +=
+    "<tr class='order-list'>"+
+      "<td>"+ item[k].getElementsByTagName("brand")[0].innerHTML + "</td> " +
+      "<td>"+ item[k].getElementsByTagName("model")[0].innerHTML + "</td> " +
+      "<td>"+ item[k].getElementsByTagName("size")[0].innerHTML + "</td> " +
+      "<td>"+ item[k].getElementsByTagName("price")[0].innerHTML+ "</td> " +
+    "</tr>";
+    document.getElementById("checkout-purchases").innerHTML = table;
+//////////////////////////////
 
   //Debugg
+ console.log(document.getElementsByClassName("order-list"));
   console.log( xmlDoc.getElementsByTagName("basket")[0]);
   console.log(k);
 }
@@ -86,28 +99,31 @@ function removeCOItem(test){
   var selectedItem = xmlDoc.getElementsByTagName("item");
   xmlDoc.getElementsByTagName("basket")[0].removeChild(selectedItem[test]);
 
-  //debugg
-  console.log( xmlDoc.getElementsByTagName("basket")[0]);
-  console.log(k);
+  //Subtract item from table
+  document.getElementsByClassName("order-list")[test].remove();
+
+   //Debugg
+ console.log(document.getElementsByClassName("order-list"));
+ console.log( xmlDoc.getElementsByTagName("basket")[0]);
+ console.log(k);
 }
 
 //Sets basket items to checkout window
 function setPS() {
   var j;
   var xmlDoc = xmlhttp.responseXML;  
-  var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
   var x = xmlDoc.getElementsByTagName("item");
 
-      for (j = 0; j < x.length; j++) {
+     /* for (j = 0; j < x.length; j++) {
 
         table +=
-        "<tr>"+
+        "<tr class='order-list'>"+
         "<td>"+ x[j].getElementsByTagName("brand")[0].innerHTML + "</td> " +
         "<td>"+ x[j].getElementsByTagName("model")[0].innerHTML + "</td> " +
         "<td>"+ x[j].getElementsByTagName("size")[0].innerHTML + "</td> " +
         "<td>"+ x[j].getElementsByTagName("price")[0].innerHTML+ "</td> " +
         "</tr>";
-        }
+        }*/
         document.getElementById("checkout-purchases").innerHTML = table;
 }
 
