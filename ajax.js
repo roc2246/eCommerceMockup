@@ -35,21 +35,21 @@ var k = -1;//Counter for checkout items
 //For checkoput screen
 var table = " ";     
 
-//Calculates total of purchases
+//For total cost of checout items
+var orderCost = 0;
+var prices = [];
+
 function totalCost(){
-  let CIprice = document.getElementsByClassName("CIprice");
-  var orderCost = 0;
-  for(var p=0; p<=CIprice.length; p++){
-    if (CIprice.length<=0){
-      return "$" + Number(0.00).toFixed(2);
-    } else if(CIprice.length>1){
-      orderCost += Number(CIprice[p].innerHTML.slice(1))+ Number(CIprice[p+1].innerHTML.slice(1));
-      return "$" + orderCost.toFixed(2);
-    } else {
-    orderCost += Number(CIprice[p].innerHTML.slice(1));
-     return "$" + orderCost.toFixed(2);
+//Calculates total of purchases
+  for (var p = 0; p<=prices.length; p++){
+    if(prices.length==0){
+      orderCost= 0 ;
+      return orderCost;
+    } else{
+    orderCost += prices[p];
+    return orderCost;
     }
-  }
+}
 }
 
 //Adds item to checkout window
