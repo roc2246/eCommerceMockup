@@ -39,33 +39,32 @@ var table = " ";
 var orderCost = 0;
 var prices = [];
 
-function totalCost(){
+var v = -1;
+function totalCost(no){
 //Calculates total of purchases
-  for (var p = 0; p<=prices.length; p++){
     if(prices.length==0){
       orderCost= 0 ;
-      return orderCost;
+      return "$" + orderCost.toFixed(2);
     } else{
-    orderCost += prices[p];
-    return orderCost;
+    orderCost += prices[no];
+    return "$" + orderCost.toFixed(2);
     }
-}
 }
 
-function reduceCost(test){
-  for (var test = 0; test<=prices.length; test++){
-    if(prices.length==0){
+function reduceCost(no){
+  if(prices.length==0){
       orderCost= 0 ;
-      return orderCost;
+      return "$" + orderCost.toFixed(2);
     } else{
-    orderCost -= prices[test];
-    return orderCost;
+    orderCost -= prices[no];
+    return "$" + orderCost.toFixed(2);
     }
-}
+
 }
 
 //Adds item to checkout window
 function newItem(){
+  v++;
   var xmlDoc = xmlhttp.responseXML;  
 var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
 
@@ -108,14 +107,15 @@ for(var g = 0; g<item.length; g++){
       "<td class='XbuttonCO close' onclick='removeItem("+ g + "); removeCOItem("+ g + ")'>X</td>"+
       "</tr>";
 }
-table += "<tr><td>TOTAL: </td>" + "<td>"+totalCost()+"</td></tr>";
+table += "<tr><td>TOTAL: </td>" + "<td>"+totalCost(v)+"</td></tr>";
     document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
-
+console.log(v);
 }
 
 //Removes item from checkout window
 function removeCOItem(test){
+  v--;
   k--;//Counter for checkout items
   var xmlDoc = xmlhttp.responseXML;  
   var selectedItem = xmlDoc.getElementsByTagName("item");
@@ -141,10 +141,10 @@ if (selectedItem.length == 0){
       "</tr>";
   }
 }
-table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>";
+table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(v)+"</td></tr>";
         document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
-
+console.log(v);
 }
 
 //Sets basket items to checkout window
