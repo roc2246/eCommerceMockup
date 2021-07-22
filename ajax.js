@@ -35,6 +35,23 @@ var k = -1;//Counter for checkout items
 //For checkoput screen
 var table = " ";     
 
+//Calculates total of purchases
+function totalCost(){
+  let CIprice = document.getElementsByClassName("CIprice");
+  var orderCost = 0;
+  for(var p=0; p<=CIprice.length; p++){
+    if (CIprice.length<=0){
+      return "$" + 0.00;
+    } else if(CIprice.length>1){
+      orderCost += Number(CIprice[p].innerHTML.slice(1))+ Number(CIprice[p+1].innerHTML.slice(1));
+      return "$" + orderCost;
+    } else {
+    orderCost += Number(CIprice[p].innerHTML.slice(1));
+     return "$" + orderCost;
+    }
+  }
+}
+
 //Adds item to checkout window
 function newItem(){
   var xmlDoc = xmlhttp.responseXML;  
@@ -80,6 +97,7 @@ for(var g = 0; g<item.length; g++){
       "<td class='XbuttonCO close' onclick='removeItem("+ g + "); removeCOItem("+ g + ")'>X</td>"+
       "</tr>";
 }
+table += "<tr><td>TOTAL: </td>" + "<td>"+totalCost()+"</td></tr>";
     document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 
@@ -112,6 +130,7 @@ if (selectedItem.length == 0){
       "</tr>";
   }
 }
+table += "<tr><td>TOTAL: </td>" + "<td>"+totalCost()+"</td></tr>";
         document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 
