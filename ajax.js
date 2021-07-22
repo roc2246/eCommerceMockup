@@ -41,27 +41,25 @@ var prices = [];
 
 function totalCost(){
 //Calculates total of purchases
-  for (var p = 0; p<=prices.length; p++){
+for (var v = 0; v<=prices.length; v++)
     if(prices.length==0){
       orderCost= 0 ;
-      return orderCost;
+      return "$" + orderCost.toFixed(2);
     } else{
-    orderCost += prices[p];
-    return orderCost;
+    orderCost += prices[v];
+    return "$" + orderCost.toFixed(2);
     }
-}
 }
 
-function reduceCost(test){
-  for (var test = 0; test<=prices.length; test++){
-    if(prices.length==0){
+function reduceCost(no){
+  if(prices.length==0){
       orderCost= 0 ;
-      return orderCost;
+      return "$" + orderCost.toFixed(2);
     } else{
-    orderCost -= prices[test];
-    return orderCost;
+    orderCost -= prices[no];
+    return "$" + orderCost.toFixed(2);
     }
-}
+
 }
 
 //Adds item to checkout window
@@ -111,7 +109,6 @@ for(var g = 0; g<item.length; g++){
 table += "<tr><td>TOTAL: </td>" + "<td>"+totalCost()+"</td></tr>";
     document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
-
 }
 
 //Removes item from checkout window
@@ -144,7 +141,6 @@ if (selectedItem.length == 0){
 table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>";
         document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
-
 }
 
 //Sets basket items to checkout window
