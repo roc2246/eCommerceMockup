@@ -35,21 +35,33 @@ var k = -1;//Counter for checkout items
 //For checkoput screen
 var table = " ";     
 
-//Calculates total of purchases
+//For total cost of checout items
+var orderCost = 0;
+var prices = [];
+
 function totalCost(){
-  let CIprice = document.getElementsByClassName("CIprice");
-  var orderCost = 0;
-  for(var p=0; p<=CIprice.length; p++){
-    if (CIprice.length<=0){
-      return "$" + Number(0.00).toFixed(2);
-    } else if(CIprice.length>1){
-      orderCost += Number(CIprice[p].innerHTML.slice(1))+ Number(CIprice[p+1].innerHTML.slice(1));
-      return "$" + orderCost.toFixed(2);
-    } else {
-    orderCost += Number(CIprice[p].innerHTML.slice(1));
-     return "$" + orderCost.toFixed(2);
+//Calculates total of purchases
+  for (var p = 0; p<=prices.length; p++){
+    if(prices.length==0){
+      orderCost= 0 ;
+      return orderCost;
+    } else{
+    orderCost += prices[p];
+    return orderCost;
     }
-  }
+}
+}
+
+function reduceCost(test){
+  for (var test = 0; test<=prices.length; test++){
+    if(prices.length==0){
+      orderCost= 0 ;
+      return orderCost;
+    } else{
+    orderCost -= prices[test];
+    return orderCost;
+    }
+}
 }
 
 //Adds item to checkout window
@@ -73,7 +85,6 @@ var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";
   var newItem = xmlDoc.createElement("item");
   var item = xmlDoc.getElementsByTagName("item");
 
-  //Edit Later
   newItem.appendChild(brand);
   newItem.appendChild(model);
   newItem.appendChild(size);
@@ -130,7 +141,7 @@ if (selectedItem.length == 0){
       "</tr>";
   }
 }
-table += "<tr><td>TOTAL: </td>" + "<td>"+totalCost()+"</td></tr>";
+table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>";
         document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 
