@@ -39,7 +39,8 @@ var table = " ";
 var orderCost = 0;
 var prices = [];
 
-function totalCost(){
+var v = -1;
+function totalCost(no){
 //Calculates total of purchases
 for (var v = 0; v<=prices.length; v++)
     if(prices.length==0){
@@ -64,6 +65,7 @@ function reduceCost(no){
 
 //Adds item to checkout window
 function newItem(){
+  v++;
   var xmlDoc = xmlhttp.responseXML;  
 var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
 
@@ -106,13 +108,14 @@ for(var g = 0; g<item.length; g++){
       "<td class='XbuttonCO close' onclick='removeItem("+ g + "); removeCOItem("+ g + ")'>X</td>"+
       "</tr>";
 }
-table += "<tr><td>TOTAL: </td>" + "<td>"+totalCost()+"</td></tr>";
+table += "<tr><td>TOTAL: </td>" + "<td>"+totalCost(v)+"</td></tr>";
     document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 }
 
 //Removes item from checkout window
 function removeCOItem(test){
+  v--;
   k--;//Counter for checkout items
   var xmlDoc = xmlhttp.responseXML;  
   var selectedItem = xmlDoc.getElementsByTagName("item");
@@ -138,7 +141,7 @@ if (selectedItem.length == 0){
       "</tr>";
   }
 }
-table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>";
+table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(v)+"</td></tr>";
         document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 }
