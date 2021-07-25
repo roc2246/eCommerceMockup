@@ -37,11 +37,12 @@ var table = " ";
 
 //For total cost of checout items
 var orderCost = 0;
+var v = -1;//Counter to calculate prices
 var prices = [];
 
 function totalCost(){
 //Calculates total of purchases
-for (var v = 0; v<=prices.length; v++)
+v++;
     if(prices.length==0){
       orderCost= 0 ;
       return "$" + orderCost.toFixed(2);
@@ -51,13 +52,16 @@ for (var v = 0; v<=prices.length; v++)
     }
 }
 
-function reduceCost(no){
+function reduceCost(){
+  v--;
   if(prices.length==0){
       orderCost= 0 ;
       return "$" + orderCost.toFixed(2);
     } else{
-    orderCost -= prices[no];
+    for(var z = 0; z<prices.length; z++){
+    orderCost += prices[z];
     return "$" + orderCost.toFixed(2);
+    }
     }
 
 }
@@ -138,7 +142,7 @@ if (selectedItem.length == 0){
       "</tr>";
   }
 }
-table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>";
+table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost()+"</td></tr>";
         document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 }
