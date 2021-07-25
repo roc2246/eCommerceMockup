@@ -25,10 +25,6 @@ function removeItem(itemNo){
     var cartItem = document.getElementsByClassName("cart-item");
     document.getElementById("cart").removeChild(cartItem[itemNo]);
 
-    //Removes cost of item from 'prices' array
-    prices.splice(itemNo, 1);
-    console.log(prices);
-
     //Resets input counter value    
     var removeBttn = document.getElementsByClassName("remove-button");
     for (var b=0; b<removeBttn.length; b++){
@@ -113,7 +109,6 @@ function toCart(i){
 
   //pushes cart item prices to array
   prices.push(Number(document.getElementsByClassName("CIprice")[c].innerHTML.slice(1)));
-  console.log(prices);
 
   //Counts amount of items in cart
   document.getElementById("count").innerHTML = cart.childElementCount;

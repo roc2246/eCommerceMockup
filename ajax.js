@@ -32,7 +32,7 @@ function loadPBasket(url) {
 
 var k = -1;//Counter for checkout items
 
-//For checkoput screen
+//For checkout screen
 var table = " ";     
 
 //For total cost of checout items
@@ -42,7 +42,7 @@ var prices = [];
 
 function totalCost(){
 //Calculates total of purchases
-v++;
+    v++;//Counter to calculate prices
     if(prices.length==0){
       orderCost= 0 ;
       return "$" + orderCost.toFixed(2);
@@ -53,16 +53,15 @@ v++;
 }
 
 //Fix this
-function reduceCost(){
-  v--;
+function reduceCost(test){
+  v--;//Counter to calculate prices
   if(prices.length==0){
       orderCost= 0 ;
       return "$" + orderCost.toFixed(2);
     } else{
-    for(var z = 0; z<prices.length; z++){
-    orderCost += prices[z];
+    orderCost -= prices[test];
+    prices.splice(test, 1);
     return "$" + orderCost.toFixed(2);
-    }
     }
 
 }
@@ -95,10 +94,11 @@ var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";
 
   xmlDoc.getElementsByTagName("basket")[0].appendChild(newItem);
 
-    item[k].getElementsByTagName("brand")[0].innerHTML = purBrand[k].innerHTML;
-    item[k].getElementsByTagName("model")[0].innerHTML = purModel[k].innerHTML;
-    item[k].getElementsByTagName("size")[0].innerHTML = purSize[k].innerHTML;
-    item[k].getElementsByTagName("price")[0].innerHTML = purPrice[k].innerHTML;
+  //Adds data from cart to xml doc
+  item[k].getElementsByTagName("brand")[0].innerHTML = purBrand[k].innerHTML;
+  item[k].getElementsByTagName("model")[0].innerHTML = purModel[k].innerHTML;
+  item[k].getElementsByTagName("size")[0].innerHTML = purSize[k].innerHTML;
+  item[k].getElementsByTagName("price")[0].innerHTML = purPrice[k].innerHTML;
   
 ///////////////////////////////////////////////////Test
 for(var g = 0; g<item.length; g++){
@@ -126,13 +126,13 @@ function removeCOItem(test){
   //Subtract item from table
   document.getElementsByClassName("order-list")[test].remove();
 
-var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
+  var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
 
   ///////////////////////////////////////////////////Test
-if (selectedItem.length == 0){
-  table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";
-}else{
-  for(var z = 0; z<selectedItem.length; z++){
+  if (selectedItem.length == 0){
+   table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";
+  }else{
+    for(var z = 0; z<selectedItem.length; z++){
         table +=
         "<tr class='order-list'>"+
         "<td>"+ selectedItem[z].getElementsByTagName("brand")[0].innerHTML + "</td> " +
@@ -141,15 +141,15 @@ if (selectedItem.length == 0){
         "<td>"+ selectedItem[z].getElementsByTagName("price")[0].innerHTML+ "</td> " +
       "<td class='XbuttonCO close' onclick='removeItem("+ z + "); removeCOItem("+ z + ")'>X</td>"+
       "</tr>";
+   }
   }
-}
-table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost()+"</td></tr>";
-        document.getElementById("checkout-purchases").innerHTML = table;
-//////////////////////////////
+  table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>";
+  document.getElementById("checkout-purchases").innerHTML = table;
+  //////////////////////////////
 }
 
 //Sets basket items to checkout window
 function setPS() {  
-        document.getElementById("checkout-purchases").innerHTML = table;
+  document.getElementById("checkout-purchases").innerHTML = table;
 }
 
