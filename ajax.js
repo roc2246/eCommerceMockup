@@ -53,16 +53,15 @@ v++;
 }
 
 //Fix this
-function reduceCost(){
+function reduceCost(test){
   v--;
   if(prices.length==0){
       orderCost= 0 ;
       return "$" + orderCost.toFixed(2);
     } else{
-    for(var z = 0; z<prices.length; z++){
-    orderCost += prices[z];
+    orderCost -= prices[test];
+    prices.splice(test, 1);
     return "$" + orderCost.toFixed(2);
-    }
     }
 
 }
@@ -143,7 +142,7 @@ if (selectedItem.length == 0){
       "</tr>";
   }
 }
-table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost()+"</td></tr>";
+table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>";
         document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 }
