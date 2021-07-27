@@ -1,3 +1,7 @@
+<?php 
+ob_start();
+session_start(); 
+?>
 <?php include 'include/connect.php' ?>
 <?php include 'functions.php'?>
 
@@ -59,6 +63,7 @@ function removeItem(itemNo){
 <?php login();?>
 </form>
 <a href="newUser.php">Register Account</a>
+<a href="logout.php">Clear Session</a>
 </div>
 
 </div>

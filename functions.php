@@ -161,17 +161,20 @@ function login(){
  $username = $_POST['username'];
  $password = $_POST['password'];
   if(isset($username) && isset($password)){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-        
+    $_SESSION['username'] = $username;
+    $_SESSION['password'] = $password;
+
     $query = "SELECT * from users where username = '$username' ";
     $query .= "AND password = '$password' limit 1";
 
     $result = mysqli_query($connection, $query);
     $count = mysqli_num_rows($result);
-    if($count ==1){
+    if($count ==1){ 
+      $_SESSION['valid'] = true;
+      $_SESSION['timeout'] = time();
       echo "</h4>Login succeeded!</h4>";
-      
+      echo "Username:" . $username.".<br>";
+      echo "Password:" . $password.".<br>";
     } else{
       echo "</h4>failed!</h4>";
     
