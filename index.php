@@ -57,7 +57,7 @@ function removeItem(itemNo){
 <input type="password" name="password">
 <input type="submit">
 </form>
-<a href="">Register Account</a>
+<a href="newUser.php">Register Account</a>
 </div>
 
 </div>
