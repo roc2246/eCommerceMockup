@@ -155,4 +155,27 @@ function checkAvailable(){
 }
 
 }
+
+function login(){
+ global $connection;
+ $username = $_POST['username'];
+ $password = $_POST['password'];
+  if(isset($username) && isset($password)){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+        
+    $query = "SELECT * from users where username = '$username' ";
+    $query .= "AND password = '$password' limit 1";
+
+    $result = mysqli_query($connection, $query);
+    $count = mysqli_num_rows($result);
+    if($count ==1){
+      echo "</h4>Login succeeded!</h4>";
+      
+    } else{
+      echo "</h4>failed!</h4>";
+    
+    }
+  }
+}
 ?>

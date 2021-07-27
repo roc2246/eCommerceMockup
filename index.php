@@ -52,10 +52,11 @@ function removeItem(itemNo){
 
 <div id="login">
 <h4>Login</h4>
-<form name="login" method="post" action="">
+<form name="login" method="post" action="index.php">
 <input type="text" name="username">
 <input type="password" name="password">
 <input type="submit">
+<?php login();?>
 </form>
 <a href="newUser.php">Register Account</a>
 </div>
