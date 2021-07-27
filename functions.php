@@ -127,6 +127,7 @@ function checkAvailable(){
     global $connection;
 
     $username = $_POST['username'];
+    $password = $_POST['password'];
         
     $query = "SELECT * from users where username = '$username'";
 
@@ -140,33 +141,18 @@ function checkAvailable(){
   else if($count == 0)
      {
        echo"user created";
-       registerUser();
-     }
-}
-
-function registerUser(){
-  if(isset($_POST['submit'])) {
-    global $connection;
-        
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-        
-    $query = "INSERT INTO users(username,password) ";
-    $query .= "VALUES ('$username', '$password')";    
-
-    $result = mysqli_query($connection, $query);
-    if(!$result) {
+       $query = "INSERT INTO users(username,password) ";
+       $query .= "VALUES ('$username', '$password')";    
+   
+       $result = mysqli_query($connection, $query);
+        if(!$result) {
     
-      die("QUERY FAILED" . mysqli_error($connection));    
-     }else {
-     
-     echo "Record Deleted"; 
-     
+        die("QUERY FAILED" . mysqli_error($connection));    
+        }else {
+           echo "Record Created"; 
+        }
      }
-      
-    }
-
-
 }
+
 }
 ?>
