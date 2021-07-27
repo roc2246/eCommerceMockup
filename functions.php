@@ -1,4 +1,5 @@
 <?php
+
 function uploadImage(){
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -121,4 +122,51 @@ while($row = mysqli_fetch_assoc($result)) {
     }  
 }
 
+function checkAvailable(){
+  if(isset($_POST['submit']) && !empty($_POST)) {
+    global $connection;
+
+    $username = $_POST['username'];
+        
+    $query = "SELECT * from users where username = '$username'";
+
+    $result = mysqli_query($connection, $query);
+    $count = mysqli_num_rows($result);
+
+    if($count>0)
+    {
+      echo "User unavailable";
+    }
+  else if($count == 0)
+     {
+       echo"user created";
+       registerUser();
+     }
+}
+
+function registerUser(){
+  if(isset($_POST['submit'])) {
+    global $connection;
+        
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+        
+    $query = "INSERT INTO users(username,password) ";
+    $query .= "VALUES ('$username', '$password')";    
+
+    $result = mysqli_query($connection, $query);
+    if(!$result) {
+    
+      die("QUERY FAILED" . mysqli_error($connection));    
+     }else {
+     
+     echo "Record Deleted"; 
+     
+     }
+      
+    }
+
+
+}
+}
 ?>
