@@ -162,28 +162,36 @@ function checkAvailable(){
 
 }
 
+function greetUser(){
+  if (isset($_SESSION['username']) && isset($_SESSION['password'])){
+    echo "<h4>Hello, ".$_SESSION['username']."!</h4>";
+  }
+}
+
 function login(){
  global $connection;
  $username = $_POST['username'];
  $password = $_POST['password'];
-  if(isset($username) && isset($password)){
+
+ //Strores query and query results
+ $query = "SELECT * from users where username = '$username' ";
+ $query .= "AND password = '$password' limit 1";
+ $result = mysqli_query($connection, $query);
+ $count = mysqli_num_rows($result);
+
+ 
+ if(isset($username) && isset($password) && !empty($username) && $count ==1){
     $_SESSION['username'] = $username;
     $_SESSION['password'] = $password;
 
-    $query = "SELECT * from users where username = '$username' ";
-    $query .= "AND password = '$password' limit 1";
-
-    $result = mysqli_query($connection, $query);
-    $count = mysqli_num_rows($result);
-    if($count ==1){ 
-      header("Refresh:0");
-      $_SESSION['valid'] = true;
-      $_SESSION['timeout'] = time();
-
-      echo "</h4>Login succeeded!</h4>";
- } else{
-      echo "</h4>failed!</h4>";
-    }
+    header("Refresh:0"); 
+    $_SESSION['valid'] = true;
+    $_SESSION['timeout'] = time();
+    
+ } else if ($count ==0 && !empty($username)){
+    echo "</h4>Error: Username does not exist!</h4>";
+  } else {
+    echo "";
   }
 
 }

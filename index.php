@@ -46,6 +46,7 @@ function removeItem(itemNo){
 <header>
 <h1>The Condo</h1>
 <h4>Second-Rate Boardshop</h4>
+<?php greetUser();?>
 </header>
 <?php include 'include/navigation.php' ?>
 
@@ -59,7 +60,7 @@ function removeItem(itemNo){
 <form name="login" method="post" action="index.php">
 <input type="text" name="username">
 <input type="password" name="password">
-<input type="submit">
+<input type="submit" name="submit">
 <?php login();?>
 </form>
 <a href="newUser.php">Register Account</a>
