@@ -116,7 +116,11 @@ while($row = mysqli_fetch_assoc($result)) {
         $product.= "Model: <span class='model'>" . $row['model'] . "</span><br>";
         $product.= "Size: <span class='size'>" . $row['size'] . "</span><br>";
         $product.= "Price: <span class='price'>$" . $row['price'] . "</span><br>";
-        $product.= "<button onclick='toCart(". $i .");'>Add to Cart</button>";
+        if(isset($_SESSION['username']) && isset($_SESSION['password']) ){
+          $product.= "<button onclick='toCart(". $i .");'>Add to Cart</button>";
+        }else{
+          $product.= "<button>LOGIN!</button>";
+        }
         $product.="</div>";
         echo $product;
     }  
@@ -170,15 +174,14 @@ function login(){
     $result = mysqli_query($connection, $query);
     $count = mysqli_num_rows($result);
     if($count ==1){ 
+      header("Refresh:0");
       $_SESSION['valid'] = true;
       $_SESSION['timeout'] = time();
       echo "</h4>Login succeeded!</h4>";
-      echo "Username:" . $username.".<br>";
-      echo "Password:" . $password.".<br>";
-    } else{
+ } else{
       echo "</h4>failed!</h4>";
-    
     }
   }
+
 }
 ?>
