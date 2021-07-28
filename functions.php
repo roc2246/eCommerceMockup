@@ -119,7 +119,7 @@ while($row = mysqli_fetch_assoc($result)) {
         if(isset($_SESSION['username']) && isset($_SESSION['password']) ){
           $product.= "<button onclick='toCart(". $i .");'>Add to Cart</button>";
         }else{
-          $product.= "<button>LOGIN!</button>";
+          $product.= "<button onclick='error();'>Add to Cart</button>";
         }
         $product.="</div>";
         echo $product;
@@ -146,7 +146,9 @@ function checkAvailable(){
      {
        echo"user created";
        $query = "INSERT INTO users(username,password) ";
-       $query .= "VALUES ('$username', '$password')";    
+       $query .= "VALUES ('$username', '$password')";  
+       header('Refresh: 2; URL = index.php');
+
    
        $result = mysqli_query($connection, $query);
         if(!$result) {
@@ -177,6 +179,7 @@ function login(){
       header("Refresh:0");
       $_SESSION['valid'] = true;
       $_SESSION['timeout'] = time();
+
       echo "</h4>Login succeeded!</h4>";
  } else{
       echo "</h4>failed!</h4>";

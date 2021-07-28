@@ -63,7 +63,6 @@ function removeItem(itemNo){
 <?php login();?>
 </form>
 <a href="newUser.php">Register Account</a>
-<a href="logout.php">Clear Session</a>
 </div>
 
 </div>
@@ -83,6 +82,26 @@ function removeItem(itemNo){
 <!---------------------------------------------------->
 
 <script>
+//Error if user adds item to cart without being logged on
+function error(){
+  alert("You must be logged in!")
+}
+
+//Deletes login element if logged on
+var check = document.getElementsByClassName("item");
+for(let q = 0; q<check.length; q++){
+if (check[q].childNodes[14].getAttribute("onclick") === "toCart("+[q]+");"){
+ document.getElementById("login").remove();
+
+ //Creates logout link
+ var logout = document.createElement("a");
+ logout.innerHTML = "Clear Session";
+ logout.href = "logout.php";
+ document.getElementsByClassName("main-content")[0].appendChild(logout);
+ break;
+}
+}
+
 document.getElementById("count").innerHTML = 0; //counts number of items in cart
 
 function toCart(i){
