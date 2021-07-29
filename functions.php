@@ -189,7 +189,7 @@ function login(){
     $_SESSION['timeout'] = time();
     
  } else if ($count ==0 && !empty($username)){
-    echo "</h4>Error: Username does not exist!</h4>";
+    echo "</h4>Error: Username/password does not exist!</h4>";
   } else {
     echo "";
   }
