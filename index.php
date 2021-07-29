@@ -143,6 +143,23 @@ function toCart(i){
   newItem();
 }
 
+//Places order for user
+function confirmOrder(){
+  alert("Thank you for your order!");
+  for (let s = c; s<document.getElementsByClassName("cart-item").length; s--){
+    console.log(s);
+    removeItem([s]);  
+    removeCOItem([s]);
+
+    //prevents error
+    if(c === -1){
+      document.getElementById("place-order").setAttribute("onclick", "document.getElementById('myModal').style.display = 'none';");
+      document.getElementById("place-order").innerHTML = "Return to Home Page";
+      break;
+    }
+  }
+}
+
 
 </script>
 <script src="checkout.js"></script>

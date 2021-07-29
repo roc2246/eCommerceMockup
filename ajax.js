@@ -52,7 +52,6 @@ function totalCost(){
     }
 }
 
-//Fix this
 function reduceCost(test){
   v--;//Counter to calculate prices
   if(prices.length==0){
@@ -111,7 +110,9 @@ for(var g = 0; g<item.length; g++){
       "<td class='XbuttonCO close' onclick='removeItem("+ g + "); removeCOItem("+ g + ")'>X</td>"+
       "</tr>";
 }
-table += "<tr><td>TOTAL: </td>" + "<td>"+totalCost()+"</td></tr>";
+table += 
+"<tr><td>TOTAL: </td>" + "<td>"+totalCost()+"</td></tr>" +
+"<tr><td><button id='place-order' onclick='confirmOrder();'>Place Order</button></td></tr>";
     document.getElementById("checkout-purchases").innerHTML = table;
 //////////////////////////////
 }
@@ -143,8 +144,10 @@ function removeCOItem(test){
       "</tr>";
    }
   }
-  table += "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>";
-  document.getElementById("checkout-purchases").innerHTML = table;
+  table += 
+  "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>" +
+  "<tr><td><button id='place-order' onclick='confirmOrder();'>Place Order</button></td></tr>";
+document.getElementById("checkout-purchases").innerHTML = table;
   //////////////////////////////
 }
 
