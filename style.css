@@ -64,7 +64,7 @@ header h4:last-child{
 	justify-content: center;
 }
 
-.main-content, label{
+.main-content, label, td, tr{
 	font-family:Arial, Helvetica, sans-serif;
 }
 

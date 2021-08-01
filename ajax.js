@@ -33,7 +33,7 @@ function loadPBasket(url) {
 var k = -1;//Counter for checkout items
 
 //For checkout screen
-var table = " ";     
+var table ="<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr><tr><td>TOTAL:</td><td>$0.00</td></tr>";     
 
 //For total cost of checout items
 var orderCost = 0;
