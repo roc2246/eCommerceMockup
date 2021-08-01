@@ -62,9 +62,10 @@ header h4:last-child{
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
+}
 
+.main-content, label{
 	font-family:Arial, Helvetica, sans-serif;
-
 }
 
 a:link, a:visited {

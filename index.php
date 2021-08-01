@@ -57,9 +57,9 @@ function removeItem(itemNo){
 
 <div id="login">
 <h4>Login</h4>
-<form name="login" method="post" action="index.php">
-<input type="text" name="username">
-<input type="password" name="password">
+<form name="login" method="post" action="index.php"> 
+<input type="text" name="username" placeholder = "username">
+<input type="password" name="password" placeholder="password">
 <input type="submit" name="submit" onclick="loginValid()">
 <?php login();?>
 </form>
