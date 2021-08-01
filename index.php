@@ -60,7 +60,7 @@ function removeItem(itemNo){
 <form name="login" method="post" action="index.php">
 <input type="text" name="username">
 <input type="password" name="password">
-<input type="submit" name="submit">
+<input type="submit" name="submit" onclick="loginValid()">
 <?php login();?>
 </form>
 <a href="newUser.php">Register Account</a>
@@ -86,6 +86,14 @@ function removeItem(itemNo){
 //Error if user adds item to cart without being logged on
 function error(){
   alert("You must be logged in!")
+}
+
+function loginValid(){
+  let userName = document.login.username;
+  let password = document.login.password;
+  if (userName.value == "" || password.value == ""){
+    alert("Please enter both a username and password.");
+  } 
 }
 
 //Deletes login element if logged on
