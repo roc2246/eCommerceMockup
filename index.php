@@ -88,6 +88,7 @@ function error(){
   alert("You must be logged in!")
 }
 
+//Validates login form
 function loginValid(){
   let userName = document.login.username;
   let password = document.login.password;

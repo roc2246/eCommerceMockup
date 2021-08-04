@@ -1,5 +1,4 @@
 
-/*-------------------Data inside checkout window--------------------------------*/
 //Tracks the request
 var xmlhttp;
 
@@ -40,8 +39,8 @@ var orderCost = 0;
 var v = -1;//Counter to calculate prices
 var prices = [];
 
-function totalCost(){
 //Calculates total of purchases
+function totalCost(){
     v++;//Counter to calculate prices
     if(prices.length==0){
       orderCost= 0 ;
@@ -52,14 +51,14 @@ function totalCost(){
     }
 }
 
-function reduceCost(test){
+function reduceCost(no){
   v--;//Counter to calculate prices
   if(prices.length==0){
       orderCost= 0 ;
       return "$" + orderCost.toFixed(2);
     } else{
-    orderCost -= prices[test];
-    prices.splice(test, 1);
+    orderCost -= prices[no];
+    prices.splice(no, 1);
     return "$" + orderCost.toFixed(2);
     }
 
@@ -99,7 +98,7 @@ var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";
   item[k].getElementsByTagName("size")[0].innerHTML = purSize[k].innerHTML;
   item[k].getElementsByTagName("price")[0].innerHTML = purPrice[k].innerHTML;
   
-///////////////////////////////////////////////////Test
+//Adds item to checkout list
 for(var g = 0; g<item.length; g++){
     table +=
     "<tr class='order-list'>"+
@@ -114,22 +113,21 @@ table +=
 "<tr><td>TOTAL: </td>" + "<td>"+totalCost()+"</td></tr>" +
 "<tr><td><button id='place-order' onclick='confirmOrder();'>Place Order</button></td></tr>";
     document.getElementById("checkout-purchases").innerHTML = table;
-//////////////////////////////
 }
 
 //Removes item from checkout window
-function removeCOItem(test){
+function removeCOItem(no){
   k--;//Counter for checkout items
   var xmlDoc = xmlhttp.responseXML;  
   var selectedItem = xmlDoc.getElementsByTagName("item");
-  xmlDoc.getElementsByTagName("basket")[0].removeChild(selectedItem[test]);
+  xmlDoc.getElementsByTagName("basket")[0].removeChild(selectedItem[no]);
 
   //Subtract item from table
-  document.getElementsByClassName("order-list")[test].remove();
+  document.getElementsByClassName("order-list")[no].remove();
 
   var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
 
-  ///////////////////////////////////////////////////Test
+  //Removes item from checkout list
   if (selectedItem.length == 0){
    table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";
   }else{
@@ -145,13 +143,12 @@ function removeCOItem(test){
    }
   }
   table += 
-  "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(test)+"</td></tr>" +
+  "<tr><td>TOTAL: </td>" + "<td>"+reduceCost(no)+"</td></tr>" +
   "<tr><td><button id='place-order' onclick='confirmOrder();'>Place Order</button></td></tr>";
 document.getElementById("checkout-purchases").innerHTML = table;
-  //////////////////////////////
 }
 
-//Sets basket items to checkout window
+//Sets basket items to checkout window (AJAX callback function)
 function setPS() {  
   document.getElementById("checkout-purchases").innerHTML = table;
 }
