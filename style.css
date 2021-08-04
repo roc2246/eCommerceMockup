@@ -43,7 +43,7 @@ a:hover {
 
 
 /*MAIN CONTENT*/
-header {
+header, h1 {
 	font-family: Impact, arial, sans-serif;
 	font-style: italic;
 	font-weight: lighter;
