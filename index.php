@@ -154,9 +154,12 @@ function toCart(i){
 
 //Places order for user
 function confirmOrder(){
+  if(document.getElementById("cart").childElementCount == 0){
+    alert("Error: Your cart is empty!");
+  } else{
+
   alert("Thank you for your order!");
   for (let s = c; s<document.getElementsByClassName("cart-item").length; s--){
-    console.log(s);
     removeItem([s]);  
     removeCOItem([s]);
 
@@ -166,6 +169,9 @@ function confirmOrder(){
       document.getElementById("place-order").innerHTML = "Return to Home Page";
       break;
     }
+
+    }
+
   }
 }
 
