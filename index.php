@@ -158,21 +158,20 @@ function confirmOrder(){
     alert("Error: Your cart is empty!");
   } else{
 
-  alert("Thank you for your order!");
-  for (let s = c; s<document.getElementsByClassName("cart-item").length; s--){
-    removeItem([s]);  
-    removeCOItem([s]);
+   alert("Thank you for your order!");
+   for (let s = c; s<document.getElementsByClassName("cart-item").length; s--){
+      removeItem([s]);  
+     removeCOItem([s]);
 
     //prevents error
     if(c === -1){
       document.getElementById("place-order").setAttribute("onclick", "document.getElementById('myModal').style.display = 'none';");
       document.getElementById("place-order").innerHTML = "Return to Home Page";
       break;
-    }
-
-    }
+     }
 
   }
+ }
 }
 
 
