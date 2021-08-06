@@ -105,7 +105,7 @@ if (check[q].childNodes[14].getAttribute("onclick") === "toCart("+[q]+");"){
 
  //Creates logout link
  var logout = document.createElement("a");
- logout.innerHTML = "Clear Session";
+ logout.innerHTML = "Logout";
  logout.href = "logout.php";
  document.getElementsByClassName("main-content")[0].appendChild(logout);
  break;
