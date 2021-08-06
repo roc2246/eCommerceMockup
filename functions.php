@@ -131,7 +131,7 @@ function checkAvailable(){
     global $connection;
 
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = $_POST['password'];     
         
     $query = "SELECT * from users where username = '$username'";
 
@@ -145,6 +145,17 @@ function checkAvailable(){
   else if($count == 0)
      {
        echo"user created";
+
+      //Encrypts password
+      $username = mysqli_real_escape_string($connection, $username );   
+      $password = mysqli_real_escape_string($connection, $password );
+    
+      $hashFormat = "$2y$10$"; 
+      $salt = "iusesomecrazystrings22";
+      $hashF_and_salt = $hashFormat . $salt;
+      $password = crypt($password,$hashF_and_salt);   
+
+      //Creates New User
        $query = "INSERT INTO users(username,password) ";
        $query .= "VALUES ('$username', '$password')";  
        header('Refresh: 2; URL = index.php');
@@ -173,6 +184,12 @@ function login(){
  $username = $_POST['username'];
  $password = $_POST['password'];
 
+ //For decryption
+ $hashFormat = "$2y$10$"; 
+ $salt = "iusesomecrazystrings22";
+ $hashF_and_salt = $hashFormat . $salt;
+ $password = crypt($password,$hashF_and_salt); 
+
  //Strores query and query results
  $query = "SELECT * from users where username = '$username' ";
  $query .= "AND password = '$password' limit 1";
@@ -180,6 +197,8 @@ function login(){
  $count = mysqli_num_rows($result);
 
  
+
+
  if(isset($username) && isset($password) && !empty($username) && $count ==1){
     $_SESSION['username'] = $username;
     $_SESSION['password'] = $password;
@@ -189,7 +208,7 @@ function login(){
     $_SESSION['timeout'] = time();
     
  } else if ($count ==0 && !empty($username)){
-    echo "</h4>Error: Username/password does not exist!</h4>";
+   echo "</h4>Error: Username/password does not exist!</h4>";
   } else {
     echo "";
   }
