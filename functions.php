@@ -126,14 +126,14 @@ while($row = mysqli_fetch_assoc($result)) {
     }  
 }
 
-function checkAvailable(){
+function checkAvailable($table, $loginPage){
   if(isset($_POST['submit']) && !empty($_POST)) {
     global $connection;
 
     $username = $_POST['username'];
     $password = $_POST['password'];     
         
-    $query = "SELECT * from users where username = '$username'";
+    $query = "SELECT * from $table where username = '$username'";
 
     $result = mysqli_query($connection, $query);
     $count = mysqli_num_rows($result);
@@ -156,9 +156,9 @@ function checkAvailable(){
       $password = crypt($password,$hashF_and_salt);   
 
       //Creates New User
-       $query = "INSERT INTO users(username,password) ";
+       $query = "INSERT INTO $table(username,password) ";
        $query .= "VALUES ('$username', '$password')";  
-       header('Refresh: 2; URL = index.php');
+       header('Refresh: 2; URL = ' . $loginPage);
 
    
        $result = mysqli_query($connection, $query);
@@ -179,7 +179,7 @@ function greetUser(){
   }
 }
 
-function login(){
+function login($table){
  global $connection;
  $username = $_POST['username'];
  $password = $_POST['password'];
@@ -191,7 +191,7 @@ function login(){
  $password = crypt($password,$hashF_and_salt); 
 
  //Strores query and query results
- $query = "SELECT * from users where username = '$username' ";
+ $query = "SELECT * from $table where username = '$username' ";
  $query .= "AND password = '$password' limit 1";
  $result = mysqli_query($connection, $query);
  $count = mysqli_num_rows($result);
