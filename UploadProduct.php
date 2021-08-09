@@ -1,3 +1,8 @@
+<?php 
+ob_start();
+session_start(); 
+?>
+<?php include 'functions.php'?>
 <?php include 'include/connect.php' ?>
 
 <!DOCTYPE html>
@@ -24,7 +29,6 @@
         <input type="file" name="image"><br><br>
 <button type="submit" value="submit" name="submit">submit</button>
  
-<?php include 'functions.php'?>
 <div id="concept">
 <h4>Upload Status</h4>
 <?php invenProd();?>
@@ -97,7 +101,7 @@ document.uploads.submit.addEventListener("click", function(){
 
 
 </script>
-
+<a href="mainAdmin.php">Back</a>
 
 </body>
 </html>
