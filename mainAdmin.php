@@ -18,6 +18,7 @@ session_start();
 <body>
     <h1>Admin Page</h1>
     <a href="uploadProduct.php">Upload Inventory Item</a><br>
+    <a href="deleteProduct.php">Delete Inventory Item</a><br>
     <a href="logout.php">logout</a>
 </body>
 </html>

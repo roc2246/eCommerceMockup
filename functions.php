@@ -179,7 +179,7 @@ function greetUser(){
   }
 }
 
-function login($table){
+function login($table, $time, $otherPara){
  global $connection;
  $username = $_POST['username'];
  $password = $_POST['password'];
@@ -203,7 +203,7 @@ function login($table){
     $_SESSION['username'] = $username;
     $_SESSION['password'] = $password;
 
-    header("Refresh:0"); 
+    header("Refresh:". $time .";". $otherPara); 
     $_SESSION['valid'] = true;
     $_SESSION['timeout'] = time();
     
@@ -214,4 +214,52 @@ function login($table){
   }
 
 }
+
+function showAllData() {
+  global $connection;
+  $query = "SELECT * FROM inventory";
+  $result = mysqli_query($connection, $query);
+  if(!$result) {
+      die('Query FAILED' . mysqli_error($connection));
+  }
+
+  while($row = mysqli_fetch_assoc($result)) {
+     $id = $row['prodID'];
+     $brand = $row['brand'];
+     $model = $row['model'];
+     $size = $row['size'];
+     $price = $row['price'];
+      
+  echo "<option name = '$id' value='$id'>$id    $brand $model $size $price</option>";
+  
+  }
+}
+  
+function deleteRows() {
+global $connection;
+  if(isset($_POST['submit'])) {
+    /*echo "Are you sure?";
+    echo "<button name='yes'>Yes</button>";
+    echo "<button name='no'>No</button>";
+
+    if(isset($_POST['yes'])){*/
+     $prodID = $_POST['ID'];
+
+      $query = "DELETE FROM inventory WHERE prodID = '$prodID' ";
+  
+      $result = mysqli_query($connection, $query);
+        if(!$result) {
+          die("QUERY FAILED" . mysqli_error($connection));    
+        }else {
+           echo "Record Deleted"; 
+       header('Refresh: 1');
+
+        }
+      
+     /* } else if(isset($_POST['no'])){
+         echo "action aborted";
+      }*/
+    }
+  }
+
 ?>
