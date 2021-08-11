@@ -61,7 +61,7 @@ function removeItem(itemNo){
 <input type="text" name="username" placeholder = "username">
 <input type="password" name="password" placeholder="password">
 <input type="submit" name="submit" onclick="loginValid()">
-<?php login('users');?>
+<?php login('users', '0', '');?>
 </form>
 <a href="newUser.php">Register Account</a><br>
 <a href="admin.php">Admin Login</a>

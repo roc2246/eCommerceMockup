@@ -19,15 +19,7 @@
 <input type="text" name="username" placeholder = "username">
 <input type="password" name="password" placeholder="password">
 <input type="submit" name="submit" onclick="loginValid()">
-<?php
-if (isset($_POST['username']) && isset($_POST['password'])){
-echo "Login Successful. Please wait...";  
-login('admin');
-header('Refresh: 2; URL = mainAdmin.php');}
-else {
-  echo "";
-}
-?>
+<?php login('admin', '0', 'URL = mainAdmin.php'); ?>
 </form>
 <a href="newAdmin.php">Register Admin Account</a>
 </div>
@@ -41,7 +33,6 @@ function loginValid(){
     alert("Please enter both a username and password.");
   } 
 }
-
 
 </script>
 
