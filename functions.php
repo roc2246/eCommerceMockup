@@ -18,14 +18,6 @@ if(isset($_POST["submit"])) {
   }
 }
 
-/*
-// Check if file already exists
-if (file_exists($target_file)) {
-  echo "Sorry, file already exists.<br><br>";
-  $uploadOk = 0;
-}
-*/
-
 // Check file size
 if ($_FILES["image"]["size"] > 500000) {
   echo "Sorry, your file is too large.<br><br>";
@@ -34,7 +26,7 @@ if ($_FILES["image"]["size"] > 500000) {
 
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
+&& $imageFileType != "gif" && isset($_POST['image'])) {
   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br><br>";
   $uploadOk = 0;
 }
@@ -46,7 +38,7 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.<br><br>";
-  } else {
+  } else if (!move_uploaded_file($_FILES["image"]["tmp_name"], $target_file) && isset($_POST['image'])){
     echo "Sorry, there was an error uploading your file.<br><br>";
   }
 }
@@ -261,5 +253,40 @@ global $connection;
       }*/
     }
   }
+
+  function updateProduct() {
+    if(isset($_POST['submit'])) {
+    
+global $connection;
+$id = $_POST['ID'];
+$brand = $_POST['brand'];
+$model = $_POST['model'];
+$size = $_POST['size'];
+$price = $_POST['price'];
+$image = $_FILES["image"]["name"];
+    
+$query = "UPDATE inventory SET ";
+$query .= "brand = '$brand', ";
+$query .= "model = '$model', ";
+$query .= "size = '$size', ";
+$query .= "price = '$price', ";
+$query .= "image = '$image' ";
+$query .= "WHERE prodID = '$id'";
+
+$result = mysqli_query($connection, $query);
+    if(!$result) {
+    
+     die("QUERY FAILED" . mysqli_error($connection));    
+    }else {
+    
+    echo "Record Updated"; 
+    header('Refresh: 1');
+    }
+        
+    }
+    
+
+}
+
 
 ?>
