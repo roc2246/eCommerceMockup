@@ -226,6 +226,38 @@ function showAllData() {
   
   }
 }
+
+function showAllDataFORM() {
+  global $connection;
+  $query = "SELECT * FROM inventory";
+  $result = mysqli_query($connection, $query);
+  if(!$result) {
+      die('Query FAILED' . mysqli_error($connection));
+  }
+
+  if($row = mysqli_fetch_assoc($result)) {
+     $id = $row['prodID'];
+     $brand = $row['brand'];
+     $model = $row['model'];
+     $size = $row['size'];
+     $price = $row['price'];
+    $image = $_FILES["image"]["name"];
+
+      
+  echo "<label>Brand:</label>";
+  echo " <input type='text' name='brand' value= '$brand'><br><br>";
+  echo "<label>Model:</label>";
+  echo " <input type='text' name='model' value= '$model'><br><br>";
+  echo "<label>Price:</label>";
+  echo " <input type='text' name='price' value= '$price'><br><br>";
+  echo "<label>Size:</label>";
+  echo " <input type='text' name='size' value= '$size'><br><br>";
+  echo "<label>Product Image:</label>";
+  echo " <input type='file' name='image' value= '$image'><br><br>";
+  
+  }
+}
+  
   
 function deleteRows() {
 global $connection;

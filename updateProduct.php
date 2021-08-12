@@ -5,6 +5,8 @@ session_start();
 <?php include 'include/connect.php' ?>
 <?php include 'functions.php'?>
 
+<?php ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +18,9 @@ session_start();
     <title>Update Inventory Item</title>
 </head>
 <body>
-        <h1 class="text-center">Update</h1>
+        <h1>Update</h1>
      <form name="update" method="post">
-        <label>Brand:</label>
+        <!--<label>Brand:</label>
         <input type="text" name="brand"><br><br>
        <label>Model:</label>
         <input type="text" name="model"><br><br>
@@ -27,8 +29,8 @@ session_start();
        <label>Size:</label>
         <input type="text" name="size"><br><br>
         <label>Product Image:</label>
-        <input type="file" name="image"><br><br>
-
+        <input type="file" name="image"><br><br>-->
+        <?php showAllDataFORM();?>
              <select name="ID">
                 <?php 
                 showAllData();
