@@ -245,15 +245,15 @@ function showAllDataFORM() {
 
       
   echo "<label>Brand:</label>";
-  echo " <input type='text' name='brand' value= '$brand'><br><br>";
+  echo " <input type='text' name='brand'><br><br>";
   echo "<label>Model:</label>";
-  echo " <input type='text' name='model' value= '$model'><br><br>";
+  echo " <input type='text' name='model'><br><br>";
   echo "<label>Price:</label>";
-  echo " <input type='text' name='price' value= '$price'><br><br>";
+  echo " <input type='text' name='price'><br><br>";
   echo "<label>Size:</label>";
-  echo " <input type='text' name='size' value= '$size'><br><br>";
+  echo " <input type='text' name='size'><br><br>";
   echo "<label>Product Image:</label>";
-  echo " <input type='file' name='image' value= '$image'><br><br>";
+  echo " <input type='file' name='image'><br><br>";
   
   }
 }

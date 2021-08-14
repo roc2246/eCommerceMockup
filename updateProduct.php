@@ -20,18 +20,8 @@ session_start();
 <body>
         <h1>Update</h1>
      <form name="update" method="post">
-        <!--<label>Brand:</label>
-        <input type="text" name="brand"><br><br>
-       <label>Model:</label>
-        <input type="text" name="model"><br><br>
-       <label>Price:</label>
-        <input type="text" name="price"><br><br>
-       <label>Size:</label>
-        <input type="text" name="size"><br><br>
-        <label>Product Image:</label>
-        <input type="file" name="image"><br><br>-->
         <?php showAllDataFORM();?>
-             <select name="ID">
+             <select id="ID" name="ID">
                 <?php 
                 showAllData();
                   ?>
@@ -43,6 +33,19 @@ session_start();
 
 <a href="mainAdmin.php">Back</a>
 
+<!--For assigning values to textboxes-->
+<script>
+    //Fix and Refactor
+    let totalOptions = document.getElementById("ID").options;
+    function option(no){
+    return totalOptions.item(no).text;
+    }
+   console.log(totalOptions.length);
+    document.update.brand.value = option(0);
+    document.update.model.value = option(1);
+    document.update.size.value = option(2);
+    document.update.price.value = option(3);
+</script>
 <script>
 //Form
 var updateFrm = document.update;
