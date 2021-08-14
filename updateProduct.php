@@ -20,18 +20,8 @@ session_start();
 <body>
         <h1>Update</h1>
      <form name="update" method="post">
-        <!--<label>Brand:</label>
-        <input type="text" name="brand"><br><br>
-       <label>Model:</label>
-        <input type="text" name="model"><br><br>
-       <label>Price:</label>
-        <input type="text" name="price"><br><br>
-       <label>Size:</label>
-        <input type="text" name="size"><br><br>
-        <label>Product Image:</label>
-        <input type="file" name="image"><br><br>-->
         <?php showAllDataFORM();?>
-             <select name="ID">
+             <select id="ID" name="ID">
                 <?php 
                 showAllData();
                   ?>
@@ -43,6 +33,26 @@ session_start();
 
 <a href="mainAdmin.php">Back</a>
 
+<!--For assigning values to textboxes-->
+<script>
+    //Fix and Refactor
+    //For reference : https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onchange
+    //For reference : https://www.w3schools.com/jsref/event_onchange.asp
+    let totalOptions = document.getElementById("ID").options;
+    function option(optNo, strNo){
+    return totalOptions.item(optNo).text.split(" ")[strNo];
+    }
+
+  function displayOption(opt){
+    document.update.brand.value = option(opt, 1);
+    document.update.model.value = option(opt, 2);
+    document.update.size.value = option(opt, 3);
+    document.update.price.value = option(opt, 4);
+  }
+
+ // displayOption(1);
+
+</script>
 <script>
 //Form
 var updateFrm = document.update;
