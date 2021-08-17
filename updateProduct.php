@@ -35,12 +35,9 @@ session_start();
 
 <!--For assigning values to textboxes-->
 <script>
-    //Fix and Refactor
-    //For reference : https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onchange
-    //For reference : https://www.w3schools.com/jsref/event_onchange.asp
     let totalOptions = document.getElementById("ID").options;
     function option(optNo, strNo){
-    return totalOptions.item(optNo).text.split(" ")[strNo];
+    return totalOptions.item(optNo).text.split("-")[strNo];
     }
 
   function displayOption(opt){
@@ -50,7 +47,11 @@ session_start();
     document.update.price.value = option(opt, 4);
   }
 
- // displayOption(1);
+ document.getElementById("ID").onchange = function () {
+     displayOption(document.getElementById("ID").selectedIndex);
+ }
+
+
 
 </script>
 <script>

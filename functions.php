@@ -221,9 +221,8 @@ function showAllData() {
      $model = $row['model'];
      $size = $row['size'];
      $price = $row['price'];
-      
-  echo "<option name = '$id' value='$id'>$id    $brand $model $size $price</option>";
-  
+
+  echo "<option name = '$id' value='$id'>$id - $brand - $model - $size - $price</option>";
   }
 }
 
