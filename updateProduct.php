@@ -64,16 +64,16 @@ session_start();
 </script>
 <script>
 //Form
-var updateFrm = document.update;
+const updateFrm = document.update;
 
 //Textboxes
-var brand = document.update.brand;
-var model = document.update.model;
-var price = document.update.price;
-var size = document.update.size;
+const brand = document.update.brand;
+const model = document.update.model;
+const price = document.update.price;
+const size = document.update.size;
 
 //RegEx
-var regExPrice = /(\d+\.\d{1,2})/g;
+const regExPrice = /(\d+\.\d{1,2})/g;
 
 //Enable Data Submission
 function enableSubmit(){
