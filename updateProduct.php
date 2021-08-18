@@ -19,22 +19,29 @@ session_start();
 </head>
 <body>
         <h1>Update</h1>
-     <form name="update" method="post">
-        <?php showAllDataFORM();?>
-             <select id="ID" name="ID">
-                <?php 
-                showAllData();
-                  ?>
-             </select>
-            <input type="submit" name="submit" value="UPDATE">
-            <?php updateProduct();
-            uploadImage();?>
-        </form>
+            <form name="update" method="post">
+              <label>Brand:</label>
+              <input type='text' name='brand'><br><br>
+              <label>Model:</label>
+              <input type='text' name='model'><br><br>
+              <label>Price:</label>
+              <input type='text' name='price'><br><br>
+              <label>Size:</label>
+              <input type='text' name='size'><br><br>
+              <label>Product Image:</label>
+              <input type='file' name='image'><br><br>
+                 <select id="ID" name="ID">
+                    <?php showAllData();?>
+                 </select>
+              <input type="submit" name="submit" value="UPDATE">
+              <?php updateProduct(); uploadImage();?>
+            </form>
 
 <a href="mainAdmin.php">Back</a>
 
 <!--For assigning values to textboxes-->
 <script>
+
     let totalOptions = document.getElementById("ID").options;
     function option(optNo, strNo){
     return totalOptions.item(optNo).text.split("-")[strNo];
@@ -47,7 +54,8 @@ session_start();
     document.update.price.value = option(opt, 4);
   }
 
- document.getElementById("ID").onchange = function () {
+
+ document.getElementById("ID").onchange = () => {
      displayOption(document.getElementById("ID").selectedIndex);
  }
 
@@ -65,8 +73,7 @@ var price = document.update.price;
 var size = document.update.size;
 
 //RegEx
-var regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
-//var RegExSize = //g;
+var regExPrice = /(\d+\.\d{1,2})/g;
 
 //Enable Data Submission
 function enableSubmit(){
@@ -84,7 +91,7 @@ function preventSubmit() {
 
 
 //////////Checks for errors upon submission///////////////////
-document.update.submit.addEventListener("click", function(){
+document.update.submit.addEventListener("click", () => {
     if (brand.value != "" && 
         model.value != "" && 
         regExPrice.test(price.value) && 
@@ -113,9 +120,6 @@ document.update.submit.addEventListener("click", function(){
     }
     
 });
-
-
-
 
 </script>
 

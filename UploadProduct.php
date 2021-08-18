@@ -48,7 +48,6 @@ var size = document.uploads.size;
 
 //RegEx
 var regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
-//var RegExSize = //g;
 
 //Enable Data Submission
 function enableSubmit(){
