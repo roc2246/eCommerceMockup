@@ -214,6 +214,7 @@ function showAllData() {
   if(!$result) {
       die('Query FAILED' . mysqli_error($connection));
   }
+  echo "<option>Select Inventory Item:</option>";
 
   while($row = mysqli_fetch_assoc($result)) {
      $id = $row['prodID'];
@@ -224,100 +225,48 @@ function showAllData() {
 
   echo "<option name = '$id' value='$id'>$id - $brand - $model - $size - $price</option>";
   }
-}
-
-function showAllDataFORM() {
-  global $connection;
-  $query = "SELECT * FROM inventory";
-  $result = mysqli_query($connection, $query);
-  if(!$result) {
-      die('Query FAILED' . mysqli_error($connection));
-  }
-
-  if($row = mysqli_fetch_assoc($result)) {
-     $id = $row['prodID'];
-     $brand = $row['brand'];
-     $model = $row['model'];
-     $size = $row['size'];
-     $price = $row['price'];
-    $image = $_FILES["image"]["name"];
-
-      
-  echo "<label>Brand:</label>";
-  echo " <input type='text' name='brand'><br><br>";
-  echo "<label>Model:</label>";
-  echo " <input type='text' name='model'><br><br>";
-  echo "<label>Price:</label>";
-  echo " <input type='text' name='price'><br><br>";
-  echo "<label>Size:</label>";
-  echo " <input type='text' name='size'><br><br>";
-  echo "<label>Product Image:</label>";
-  echo " <input type='file' name='image'><br><br>";
-  
-  }
-}
-  
+} 
   
 function deleteRows() {
-global $connection;
+  global $connection;
   if(isset($_POST['submit'])) {
-    /*echo "Are you sure?";
-    echo "<button name='yes'>Yes</button>";
-    echo "<button name='no'>No</button>";
-
-    if(isset($_POST['yes'])){*/
      $prodID = $_POST['ID'];
-
-      $query = "DELETE FROM inventory WHERE prodID = '$prodID' ";
-  
-      $result = mysqli_query($connection, $query);
+     $query = "DELETE FROM inventory WHERE prodID = '$prodID' ";
+    $result = mysqli_query($connection, $query);
         if(!$result) {
           die("QUERY FAILED" . mysqli_error($connection));    
         }else {
            echo "Record Deleted"; 
        header('Refresh: 1');
-
-        }
-      
-     /* } else if(isset($_POST['no'])){
-         echo "action aborted";
-      }*/
+       }
     }
   }
 
   function updateProduct() {
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['submit'])) {  
+      global $connection;
+      $id = $_POST['ID'];
+      $brand = $_POST['brand'];
+      $model = $_POST['model'];
+      $size = $_POST['size'];
+      $price = $_POST['price'];
+      $image = $_FILES["image"]["name"];
     
-global $connection;
-$id = $_POST['ID'];
-$brand = $_POST['brand'];
-$model = $_POST['model'];
-$size = $_POST['size'];
-$price = $_POST['price'];
-$image = $_FILES["image"]["name"];
-    
-$query = "UPDATE inventory SET ";
-$query .= "brand = '$brand', ";
-$query .= "model = '$model', ";
-$query .= "size = '$size', ";
-$query .= "price = '$price', ";
-$query .= "image = '$image' ";
-$query .= "WHERE prodID = '$id'";
+      $query = "UPDATE inventory SET ";
+      $query .= "brand = '$brand', ";
+      $query .= "model = '$model', ";
+      $query .= "size = '$size', ";
+      $query .= "price = '$price', ";
+      $query .= "image = '$image' ";
+      $query .= "WHERE prodID = '$id'";
 
-$result = mysqli_query($connection, $query);
-    if(!$result) {
-    
-     die("QUERY FAILED" . mysqli_error($connection));    
-    }else {
-    
-    echo "Record Updated"; 
-    header('Refresh: 1');
-    }
-        
-    }
-    
-
-}
-
-
+      $result = mysqli_query($connection, $query);
+        if(!$result) {
+          die("QUERY FAILED" . mysqli_error($connection));    
+        }else {
+          echo "Record Updated"; 
+          header('Refresh: 1');
+          }   
+        }
+      }
 ?>
