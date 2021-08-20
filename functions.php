@@ -1,4 +1,6 @@
 <?php
+//Debugg
+echo sys_get_temp_dir();
 
 function uploadImage(){
 $target_dir = "uploads/";
@@ -15,6 +17,10 @@ if(isset($_POST["submit"])) {
   } else {
     echo "File is not an image.<br><br>";
     $uploadOk = 0;
+
+    //Debugg
+    print_r($_FILES);
+    echo $_FILES["image"]["tmp_name"];
   }
 }
 
@@ -188,9 +194,6 @@ function login($table, $time, $otherPara){
  $result = mysqli_query($connection, $query);
  $count = mysqli_num_rows($result);
 
- 
-
-
  if(isset($username) && isset($password) && !empty($username) && $count ==1){
     $_SESSION['username'] = $username;
     $_SESSION['password'] = $password;
@@ -269,4 +272,18 @@ function deleteRows() {
           }   
         }
       }
+
+  function pleaseLoginAdmin(){
+
+    if(isset($_SESSION['username']) && isset($_SESSION['password']) ){
+      echo "Hello" . " " .$_SESSION['username'];
+
+     } else{
+      header('Refresh: 0; loginError.php');
+     }
+       
+    } 
+  
+
+
 ?>

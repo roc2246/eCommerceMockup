@@ -4,7 +4,7 @@ session_start();
 ?>
 <?php include 'include/connect.php' ?>
 <?php include 'functions.php'?>
-
+<?php pleaseLoginAdmin();?>
 
 <!DOCTYPE html>
 <html lang="en">
