@@ -2,8 +2,8 @@
 ob_start();
 session_start(); 
 ?>
-<?php include 'include/connect.php' ?>
-<?php include 'functions.php'?>
+<?php include 'include/connect.php'; ?>
+<?php include 'functions.php';?>
 
 
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ function removeItem(itemNo){
 <h4>Second-Rate Boardshop</h4>
 <?php greetUser();?>
 </header>
-<?php include 'include/navigation.php' ?>
+<?php include 'include/navigation.php'; ?>
 
 
 <div class="main-content">

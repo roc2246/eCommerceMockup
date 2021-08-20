@@ -2,8 +2,8 @@
 ob_start();
 session_start(); 
 ?>
-<?php include 'include/connect.php' ?>
-<?php include 'functions.php'?>
+<?php include 'include/connect.php'; ?>
+<?php include 'functions.php';?>
 
 <!DOCTYPE html>
 <html lang="en">
