@@ -1,6 +1,6 @@
 <?php
 //Debugg
-echo sys_get_temp_dir();
+echo sys_get_temp_dir() . "<br><br>";
 
 function uploadImage(){
 $target_dir = "uploads/";
