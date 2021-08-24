@@ -29,12 +29,12 @@ session_start();
               <label>Size:</label>
               <input type='text' name='size'><br><br>
               <label>Product Image:</label>
-              <input type='file' name='image'><br><br>
+              <?php enableUpload();?>
                  <select id="ID" name="ID">
                     <?php showAllData();?>
                  </select>
               <input type="submit" name="submit" value="UPDATE">
-              <?php updateProduct(); uploadImage();?>
+              <?php updateProduct(); checkTempLocation(); ?>
             </form>
 
 <a href="mainAdmin.php">Back</a>

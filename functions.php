@@ -1,6 +1,6 @@
 <?php
-//Debugg
-echo sys_get_temp_dir() . "<br><br>";
+//For debugging purposes
+//echo sys_get_temp_dir() . "<br><br>";
 
 function uploadImage(){
 $target_dir = "uploads/";
@@ -89,7 +89,7 @@ function invenProd(){
             die('Query FAILED: ' . mysqli_error($connection));
         } else {
             echo "<p class='upload-success'>Item successfully added to inventory.</p>";
-            uploadImage();
+            //uploadImage();
           }
         }
       }
@@ -264,8 +264,13 @@ function deleteRows() {
       $query .= "brand = '$brand', ";
       $query .= "model = '$model', ";
       $query .= "size = '$size', ";
-      $query .= "price = '$price', ";
-      $query .= "image = '$image' ";
+      if(sys_get_temp_dir() == '/tmp'){
+        $query .= "price = '$price' ";
+      echo "TEST<br><br>";
+      } else{
+        $query .= "price = '$price', ";
+        $query .= "image = '$image' ";
+      }
       $query .= "WHERE prodID = '$id'";
 
       $result = mysqli_query($connection, $query);
@@ -288,7 +293,23 @@ function deleteRows() {
      }
        
     } 
-  
+  function checkTempLocation(){
+    if (sys_get_temp_dir() == '/tmp'){
+      echo "<h4>Sorry, image uploading is down for maintenance.</h4>";
+    
+    } else {
+      uploadImage();
+    echo "";
+  }
+}
+
+function enableUpload(){
+  if(sys_get_temp_dir() != '/tmp'){
+    echo "<input type='file' name='image'><br><br>";
+     } else {
+    echo "<input type='file' name='image' disabled><br><br>";
+     }
+}
 
 
 ?>

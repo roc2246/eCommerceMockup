@@ -1,9 +1,15 @@
 <?php 
-$servername = 'localhost';
-$username = 'root';
-$password = 'root';
-$database = 'ecommerce';
-
+if ($_SERVER['HTTP_HOST'] == 'localhost'){
+  $servername = 'localhost';
+  $username = 'root';
+  $password = 'root';
+  $database = 'ecommerce';
+} else {
+  $servername = 'localhost';
+  $username = 'roc09090';
+  $password = 'je5umyju5';
+  $database = 'roc09090_wordpress';
+}
 
 
 

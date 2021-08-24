@@ -28,12 +28,12 @@ session_start();
        <label>Size:</label>
         <input type="text" name="size"><br><br>
        <label>Product Image:</label>
-        <input type="file" name="image"><br><br>
+       <?php enableUpload();?>
 <button type="submit" value="submit" name="submit">submit</button>
  
 <div id="concept">
 <h4>Upload Status</h4>
-<?php invenProd();?>
+<?php invenProd(); checkTempLocation(); ?>
 </div>
 
     </form>
