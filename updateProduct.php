@@ -19,7 +19,7 @@ session_start();
 </head>
 <body>
         <h1>Update</h1>
-            <form name="update" method="post">
+            <form name="update" method="post" autocomplete="off">
               <label>Brand:</label>
               <input type='text' name='brand'><br><br>
               <label>Model:</label>

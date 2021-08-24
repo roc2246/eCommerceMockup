@@ -18,7 +18,7 @@ session_start();
 </head>
 <body>
     <h1>Upload Your Product</h1>
-    <form name="uploads"  method="post">
+    <form name="uploads"  method="post" autocomplete="off">
        <label>Brand:</label>
         <input type="text" name="brand"><br><br>
        <label>Model:</label>

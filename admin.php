@@ -19,7 +19,7 @@ session_start();
     
 <div id="login">
 <h4>Admin Login</h4>
-<form name="adminLogin" method="post" action="admin.php"> 
+<form name="adminLogin" method="post" action="admin.php" autocomplete="off"> 
 <input type="text" name="username" placeholder = "username">
 <input type="password" name="password" placeholder="password">
 <input type="submit" name="submit" onclick="loginValid()">

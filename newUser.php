@@ -14,7 +14,7 @@
   <header>  
     <h1>New User</h1>
   </header> 
-    <form name="newUser" method="post" action="newUser.php">
+    <form name="newUser" method="post" action="newUser.php" autocomplete="off">
        <label>Username:</label>
         <input type="text" name="username"><br><br>
        <label>Password:</label>
