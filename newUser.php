@@ -22,8 +22,8 @@
 <button type="submit" value="submit" name="submit" onclick="loginValid()">submit</button>
 <h4>Username Available?</h4>
 <?php checkAvailable('users', 'index.php', 'username', 'password');?>
-    </form>
-
+    </form><br>
+<a href="index.php">Home</a>
     <script>
 function loginValid(){
   let userName = document.newUser.username;

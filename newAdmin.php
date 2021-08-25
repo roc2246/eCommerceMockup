@@ -15,13 +15,14 @@
     
 <div id="login">
 <h4>Register New Admin</h4>
-<form name="newAdmin" method="post" action="newAdmin.php" autocomplete="off"> 
-<input type="text" name="AMusername" placeholder = "username">
-<input type="password" name="AMpassword" placeholder="password">
-<input type="submit" name="submit" onclick="loginValid()">
-<?php checkAvailable('admin', 'admin.php', 'AMusername', 'AMpassword');?>
-
-</form>
+    <form name="newAdmin" method="post" action="newAdmin.php" autocomplete="off"> 
+    <input type="text" name="AMusername" placeholder = "username">
+    <input type="password" name="AMpassword" placeholder="password">
+    <input type="submit" name="submit" onclick="loginValid()">
+    <h4>Username Available?</h4>
+    <?php checkAvailable('admin', 'admin.php', 'AMusername', 'AMpassword');?>
+  </form><br>
+<a href="admin.php">Back</a>
 
 </div>
 

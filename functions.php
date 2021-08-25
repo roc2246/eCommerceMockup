@@ -271,7 +271,6 @@ function deleteRows() {
       $query .= "size = '$size', ";
       if(sys_get_temp_dir() == '/tmp'){
         $query .= "price = '$price' ";
-      echo "TEST<br><br>";
       } else{
         $query .= "price = '$price', ";
         $query .= "image = '$image' ";
