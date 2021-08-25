@@ -22,7 +22,6 @@ session_start();
     <a href="uploadProduct.php">Upload Inventory Item</a><br>
     <a href="deleteProduct.php">Delete Inventory Item</a><br>
     <a href="updateProduct.php">Update Inventory Item</a><br>
-    <a href="logout.php">logout</a>
     <br>
     <br>
     <a href="index.php">Home</a>

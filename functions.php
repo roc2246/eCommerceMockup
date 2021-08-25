@@ -180,7 +180,7 @@ function checkAvailable($table, $loginPage, $col1, $col2){
 
 function greetUser(){
   if (isset($_SESSION['username']) && isset($_SESSION['password'])){
-    echo "<h4>Hello, ".$_SESSION['username']."!</h4>";
+    echo "<h4>Hello, ".$_SESSION['username']."!  <a href='logoutCustomer.php'>Logout</a></h4>";
   }
 }
 
@@ -291,12 +291,13 @@ function deleteRows() {
   function pleaseLoginAdmin(){
 
     if(isset($_SESSION['AMusername']) && isset($_SESSION['AMpassword']) ){
-      echo "Hello" . " " .$_SESSION['AMusername'];
+      echo "Hello" . " " .$_SESSION['AMusername'] . " <a href='logoutAdmin.php'>Logout</a>";
      } else{
       header('Refresh: 0; loginError.php');
      }
        
     } 
+
   function checkTempLocation(){
     if (sys_get_temp_dir() == '/tmp'){
       echo "<h4>Sorry, image uploading is down for maintenance.</h4>";
@@ -315,5 +316,26 @@ function enableUpload(){
      }
 }
 
+
+function adminPage(){
+
+  if(isset($_SESSION['AMusername']) && isset($_SESSION['AMpassword']) ){
+    echo "<a href='mainAdmin.php'>Admin</a>";
+   } else{
+    echo "<a href='admin.php'>Admin Login</a>";
+   }
+     
+  } 
+
+ function logout($userType, $col1, $col2, $page){
+  echo $userType . ' has logged out.';
+
+  session_start();
+  unset($_SESSION[$col1]);
+  unset($_SESSION[$col2]);
+  
+  header("Refresh: 2; URL = " . $page);
+
+ } 
 
 ?>

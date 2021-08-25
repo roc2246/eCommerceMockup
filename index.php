@@ -64,8 +64,9 @@ function removeItem(itemNo){
 <?php login('users', '0', '', 'username', 'password');?>
 </form>
 <a href="newUser.php">Register Account</a><br>
-<a href="admin.php">Admin Login</a>
+<?php adminPage(); ?><br><br>
 </div>
+
 
 </div>
 
@@ -102,19 +103,10 @@ function loginValid(){
 var check = document.getElementsByClassName("item");
 for(let q = 0; q<check.length; q++){
 if (check[q].childNodes[14].getAttribute("onclick") === "toCart("+[q]+");"){
- document.getElementById("login").remove();
+ document.getElementsByTagName("h4")[2].remove();
+ document.getElementsByTagName("form")[0].remove();
+ document.getElementsByTagName("a")[1].remove();
 
- //Creates logout and admin link
- let logout = document.createElement("a");
- let admin = document.createElement("a");
- let indent = document.createElement("br");
- let indent2 = document.createElement("br");
- let mainContent = document.getElementsByClassName("main-content")[0];
- logout.innerHTML = "Logout";
- logout.href = "logout.php";
- admin.innerHTML = "Admin";
- admin.href = "mainAdmin.php";
- mainContent.append(logout, indent, indent2, admin);
  break;
 }
 }
