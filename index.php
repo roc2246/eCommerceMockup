@@ -61,7 +61,7 @@ function removeItem(itemNo){
 <input type="text" name="username" placeholder = "username">
 <input type="password" name="password" placeholder="password">
 <input type="submit" name="submit" onclick="loginValid()">
-<?php login('users', '0', '');?>
+<?php login('users', '0', '', 'username', 'password');?>
 </form>
 <a href="newUser.php">Register Account</a><br>
 <a href="admin.php">Admin Login</a>
@@ -104,11 +104,17 @@ for(let q = 0; q<check.length; q++){
 if (check[q].childNodes[14].getAttribute("onclick") === "toCart("+[q]+");"){
  document.getElementById("login").remove();
 
- //Creates logout link
- var logout = document.createElement("a");
+ //Creates logout and admin link
+ let logout = document.createElement("a");
+ let admin = document.createElement("a");
+ let indent = document.createElement("br");
+ let indent2 = document.createElement("br");
+ let mainContent = document.getElementsByClassName("main-content")[0];
  logout.innerHTML = "Logout";
  logout.href = "logout.php";
- document.getElementsByClassName("main-content")[0].appendChild(logout);
+ admin.innerHTML = "Admin";
+ admin.href = "mainAdmin.php";
+ mainContent.append(logout, indent, indent2, admin);
  break;
 }
 }

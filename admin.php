@@ -20,12 +20,13 @@ session_start();
 <div id="login">
 <h4>Admin Login</h4>
 <form name="adminLogin" method="post" action="admin.php" autocomplete="off"> 
-<input type="text" name="username" placeholder = "username">
-<input type="password" name="password" placeholder="password">
+<input type="text" name="AMusername" placeholder = "username">
+<input type="password" name="AMpassword" placeholder="password">
 <input type="submit" name="submit" onclick="loginValid()">
-<?php login('admin', '0', 'URL = mainAdmin.php'); ?>
+<?php login('admin', '0', 'URL = mainAdmin.php', 'AMusername', 'AMpassword'); ?>
 </form>
-<a href="newAdmin.php">Register Admin Account</a>
+<a href="newAdmin.php">Register Admin Account</a><br>
+<a href="index.php">Home</a>
 </div>
 
 </div>

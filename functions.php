@@ -129,14 +129,16 @@ while($row = mysqli_fetch_assoc($result)) {
     }  
 }
 
-function checkAvailable($table, $loginPage){
+//Checks if username is available, then creates new login credentials if username is available
+function checkAvailable($table, $loginPage, $col1, $col2){
   if(isset($_POST['submit']) && !empty($_POST)) {
     global $connection;
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];     
+    $username = $_POST[$col1];
+    $password = $_POST[$col2];     
+    $btwnQuotes = str_replace("'", " ", $col1);
         
-    $query = "SELECT * from $table where username = '$username'";
+    $query = "SELECT * from $table where $btwnQuotes = '$username'";
 
     $result = mysqli_query($connection, $query);
     $count = mysqli_num_rows($result);
@@ -144,7 +146,7 @@ function checkAvailable($table, $loginPage){
     if($count>0)
     {
       echo "User unavailable";
-    }
+;    }
   else if($count == 0)
      {
        echo"user created";
@@ -159,7 +161,7 @@ function checkAvailable($table, $loginPage){
       $password = crypt($password,$hashF_and_salt);   
 
       //Creates New User
-       $query = "INSERT INTO $table(username,password) ";
+       $query = "INSERT INTO $table($col1,$col2) ";
        $query .= "VALUES ('$username', '$password')";  
        header('Refresh: 2; URL = ' . $loginPage);
 
@@ -182,10 +184,10 @@ function greetUser(){
   }
 }
 
-function login($table, $time, $otherPara){
+function login($table, $time, $otherPara, $col1, $col2){
  global $connection;
- $username = $_POST['username'];
- $password = $_POST['password'];
+ $username = $_POST[$col1];
+ $password = $_POST[$col2];
 
  //For decryption
  $hashFormat = "$2y$10$"; 
@@ -193,15 +195,18 @@ function login($table, $time, $otherPara){
  $hashF_and_salt = $hashFormat . $salt;
  $password = crypt($password,$hashF_and_salt); 
 
+ $btwnQuotes = str_replace("'", " ", $col1);
+ $btwnQuotesPssWrd = str_replace("'", " ", $col2);
+
  //Strores query and query results
- $query = "SELECT * from $table where username = '$username' ";
- $query .= "AND password = '$password' limit 1";
+ $query = "SELECT * from $table where $btwnQuotes = '$username' ";
+ $query .= "AND $btwnQuotesPssWrd = '$password' limit 1";
  $result = mysqli_query($connection, $query);
  $count = mysqli_num_rows($result);
 
  if(isset($username) && isset($password) && !empty($username) && $count ==1){
-    $_SESSION['username'] = $username;
-    $_SESSION['password'] = $password;
+    $_SESSION[$col1] = $username;
+    $_SESSION[$col2] = $password;
 
     header("Refresh:". $time .";". $otherPara); 
     $_SESSION['valid'] = true;
@@ -285,9 +290,8 @@ function deleteRows() {
 
   function pleaseLoginAdmin(){
 
-    if(isset($_SESSION['username']) && isset($_SESSION['password']) ){
-      echo "Hello" . " " .$_SESSION['username'];
-
+    if(isset($_SESSION['AMusername']) && isset($_SESSION['AMpassword']) ){
+      echo "Hello" . " " .$_SESSION['AMusername'];
      } else{
       header('Refresh: 0; loginError.php');
      }

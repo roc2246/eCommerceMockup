@@ -21,7 +21,7 @@
         <input type="password" name="password"><br><br>
 <button type="submit" value="submit" name="submit" onclick="loginValid()">submit</button>
 <h4>Username Available?</h4>
-<?php checkAvailable('users', 'index.php');?>
+<?php checkAvailable('users', 'index.php', 'username', 'password');?>
     </form>
 
     <script>
