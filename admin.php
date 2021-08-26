@@ -9,30 +9,19 @@ session_start();
     <title>Admin Login</title>
 </head>
 <body>
-    
-<div id="login">
-<h4>Admin Login</h4>
-<form name="adminLogin" method="post" action="admin.php" autocomplete="off"> 
-<input type="text" name="AMusername" placeholder = "username">
-<input type="password" name="AMpassword" placeholder="password">
-<input type="submit" name="submit" onclick="loginValid()">
-<?php login('admin', '0', 'URL = mainAdmin.php', 'AMusername', 'AMpassword'); ?>
-</form>
-<a href="newAdmin.php">Register Admin Account</a><br>
-<a href="index.php">Home</a>
-</div>
+  <header>  
+    <h1>Admin Login</h1>
+  </header>  
+  <form name="adminLogin" method="post" action="admin.php" autocomplete="off"> 
+    <input type="text" name="AMusername" placeholder = "username"><br><br>
+    <input type="password" name="AMpassword" placeholder="password"><br><br>
+    <input type="submit" name="submit" onclick="loginValid(AMusername, AMpassword)">
+    <?php login('admin', '0', 'URL = mainAdmin.php', 'AMusername', 'AMpassword'); ?>
+  </form>
+  <a href="newAdmin.php">Register Admin Account</a><br>
+  <a href="index.php">Home</a>
 
-</div>
-<script>
-function loginValid(){
-  let userName = document.adminLogin.username;
-  let password = document.adminLogin.password;
-  if (userName.value == "" || password.value == ""){
-    alert("Please enter both a username and password.");
-  } 
-}
-
-</script>
+<script src = "validation.js"></script>
 
 </body>
 </html>

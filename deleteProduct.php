@@ -4,13 +4,15 @@ session_start();
 ?>
 <?php include 'include/connect.php' ?>
 <?php include 'functions.php'?>
-<?php pleaseLoginAdmin();?>
 
 <?php include 'include/header.php'; ?>
     <title>Delete Product</title>
 </head>
 <body>
-    <h1>Delete Product</h1>
+<header>    
+    <h1>Delete Inventory Items</h1>
+    <?php pleaseLoginAdmin();?>
+</header>
     <form action="deleteProduct.php" method="post">
              <div>
              <select name="ID">
