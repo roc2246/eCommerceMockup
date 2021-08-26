@@ -23,9 +23,6 @@ if(isset($_POST["submit"])) {
     echo $_FILES["image"]["tmp_name"];*/
     $uploadOk = 0;
 
-    //Debugg
-    print_r($_FILES);
-    echo $_FILES["image"]["tmp_name"];
   }
 }
 
@@ -89,7 +86,6 @@ function invenProd(){
             die('Query FAILED: ' . mysqli_error($connection));
         } else {
             echo "<p class='upload-success'>Item successfully added to inventory.</p>";
-            //uploadImage();
           }
         }
       }
