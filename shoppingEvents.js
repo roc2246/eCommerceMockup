@@ -1,4 +1,4 @@
- //Deletes login element if logged on
+ //Deletes login element if shopper is logged on
  var check = document.getElementsByClassName("item");
  for(let q = 0; q<check.length; q++){
  if (check[q].childNodes[14].getAttribute("onclick") === "toCart("+[q]+");"){
