@@ -4,14 +4,16 @@ session_start();
 ?>
 <?php include 'include/connect.php'; ?>
 <?php include 'functions.php';?>
-<?php pleaseLoginAdmin();?>
 
 
 <?php include 'include/header.php'; ?>
     <title>Update Inventory Item</title>
 </head>
 <body>
-        <h1>Update</h1>
+<header>    
+    <h1>Update Inventory Items</h1>
+    <?php pleaseLoginAdmin();?>
+</header>
             <form name="update" method="post" autocomplete="off">
               <label>Brand:</label>
               <input type='text' name='brand'><br><br>

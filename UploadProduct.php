@@ -4,13 +4,15 @@ session_start();
 ?>
 <?php include 'functions.php';?>
 <?php include 'include/connect.php'; ?>
-<?php pleaseLoginAdmin();?>
 
 <?php include 'include/header.php'; ?>
     <title>Upload Your Inventory</title>
 </head>
 <body>
+<header>    
     <h1>Upload Your Product</h1>
+    <?php pleaseLoginAdmin();?>
+</header>
     <form name="uploads"  method="post" autocomplete="off">
        <label>Brand:</label>
         <input type="text" name="brand"><br><br>
