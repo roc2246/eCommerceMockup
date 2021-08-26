@@ -1,5 +1,6 @@
 //for main page
-if (window.location.pathname == "/eCommerce/index.php" 
+if (window.location.pathname == "/eCommerce/" 
+|| window.location.pathname == "/eCommerce/index.php" 
 && document.getElementsByTagName("a")[0].innerHTML!= "Logout"){
 var userName = document.login.username;
 var userPassword = document.login.password;
