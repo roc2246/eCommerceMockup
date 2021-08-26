@@ -67,7 +67,7 @@ function reduceCost(no){
 //Adds item to checkout window
 function newItem(){
   var xmlDoc = xmlhttp.responseXML;  
-var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
+  var table = "<tr><th>Brand</th><th>Model</th><th>Size</th><th>Price</th></tr>";     
 
   //Creates catregories for each checkout item
   let brand = xmlDoc.createElement("brand");
