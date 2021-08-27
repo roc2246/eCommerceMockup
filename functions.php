@@ -319,7 +319,8 @@ function adminPage(){
   } 
 
  function logout($userType, $col1, $col2, $page){
-  echo $userType . ' has logged out.';
+  echo "<header><h4>" . $userType . ' has logged out.</h4></header>';
+  echo "<h4>You will be redirected momentarily.</h4>";
 
   session_start();
   unset($_SESSION[$col1]);
