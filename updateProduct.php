@@ -87,36 +87,11 @@ function preventSubmit() {
 
 //////////Checks for errors upon submission///////////////////
 document.update.submit.addEventListener("click", () => {
-    if (brand.value != "" && 
-        model.value != "" && 
-        regExPrice.test(price.value) && 
-        size.value != "" ){
-        enableSubmit();
-    }else if (brand.value == ""){
-        preventSubmit();
-        alert("Please Enter a Brand Name");
-        brand.focus();
-		brand.select();
-    }else if (model.value == ""){
-        preventSubmit();
-        alert("Please Enter a Model Name");
-        model.focus();
-		model.select();
-    }else if (!regExPrice.test(price.value)){
-        preventSubmit();
-        alert("Please Enter a Legitemate price");
-        price.focus();
-		price.select();
-    } else if (size.value == ""){
-        preventSubmit();
-        alert("Please Enter a size");
-        size.focus();
-		size.select();
-    }
-    
+    prodValidation();
 });
 
 </script>
+<script src="validation.js"></script>
 
 
 </body>
