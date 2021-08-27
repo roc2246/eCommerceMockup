@@ -20,12 +20,15 @@ function loginValid(username, password){
 
 
 
-  
-//For upload/update products (Will work on)
-if(window.location.pathname == "/eCommerce/uploadProduct.php"){
+//For upload/update products
+function prodValidation(){
+  //Assigns variables based off of URL location path
+  if(window.location.pathname == "/eCommerce/uploadProduct.php"){
+    //Assigns where form will process data 
+    var page = "uploadProduct.php";
 
     //Form
-    var uploadFrm = document.uploads;
+    var form = document.uploads; 
 
     //Textboxes
     var brand = document.uploads.brand;
@@ -33,48 +36,62 @@ if(window.location.pathname == "/eCommerce/uploadProduct.php"){
     var price = document.uploads.price;
     var size = document.uploads.size;
 
-}else if(window.location.pathname == "/eCommerce/updateProduct.php"){
+  } else if(window.location.pathname == "/eCommerce/updateProduct.php"){
+   //Assigns where form will process data 
+   var page = "updateProduct.php";
 
     //Form
-    var updateFrm = document.update;
+    var form = document.update;
 
-    //Textboxes
-    var brand = document.update.brand;
-    var model = document.update.model;
-    var price = document.update.price;
-    var size = document.update.size;
-
+   //Textboxes
+   var brand = document.update.brand;
+   var model = document.update.model;
+   var price = document.update.price;
+   var size = document.update.size;
 }
 
-function prodValidation(){
-    //RegEx
-    var regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
+//Enable Data Submission
+function enableSubmit(){
+   form.setAttribute("action", page);
+   form.setAttribute("enctype", "multipart/form-data");
+   form.setAttribute("onsubmit", "return true");
+  } 
 
-    if (brand.value != "" && 
-       model.value != "" && 
-       regExPrice.test(price.value) && 
-       size.value != "" ){
-       alert("SUCCESS");
-       enableSubmit();
-    }else if (brand.value == ""){
-       preventSubmit();
-       alert("Please Enter a Brand Name");
-       brand.focus();
-       brand.select();
-    }else if (model.value == ""){
-       preventSubmit();
-       alert("Please Enter a Model Name");
-       model.focus();
-       model.select();
-    }else if (!regExPrice.test(price.value)){
-       preventSubmit();
-       alert("Please Enter a Legitemate price");
-       price.focus();
-       price.select();
-    }else if (size.value == ""){
-       preventSubmit();
-       alert("Please Enter a size");
-       size.focus();
-       size.select();
-    }
+//Prevent Data Submission
+function preventSubmit() {
+  form.setAttribute("action", "");
+  form.setAttribute("enctype", "");
+  form.setAttribute("onsubmit", "return false;");
+ }
+ 
+//RegEx
+var regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
+
+if (brand.value != "" && 
+  model.value != "" && 
+  regExPrice.test(price.value) && 
+  size.value != "" ){
+    alert("SUCCESS");
+    enableSubmit();
+} else if (brand.value == ""){
+    preventSubmit();
+    alert("Please Enter a Brand Name");
+    brand.focus();
+    brand.select();
+} else if (model.value == ""){
+    preventSubmit();
+    alert("Please Enter a Model Name");
+    model.focus();
+    model.select();
+} else if (!regExPrice.test(price.value)){
+   preventSubmit();
+   alert("Please Enter a Legitemate price");
+   price.focus();
+   price.select();
+} else if (size.value == ""){
+   preventSubmit();
+   alert("Please Enter a size");
+   size.focus();
+   size.select();
+  }
 }

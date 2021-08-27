@@ -7,6 +7,7 @@ session_start();
 
 
 <?php include 'include/header.php'; ?>
+<script src="validation.js"></script>
     <title>Update Inventory Item</title>
 </head>
 <body>
@@ -39,7 +40,7 @@ session_start();
 
     let totalOptions = document.getElementById("ID").options;
     function option(optNo, strNo){
-    return totalOptions.item(optNo).text.split("-")[strNo];
+    return totalOptions.item(optNo).text.split(" - ")[strNo];
     }
 
   function displayOption(opt){
@@ -58,62 +59,9 @@ session_start();
 
 </script>
 <script>
-//Form
-const updateFrm = document.update;
-
-//Textboxes
-const brand = document.update.brand;
-const model = document.update.model;
-const price = document.update.price;
-const size = document.update.size;
-
-//RegEx
-const regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
-
-//Enable Data Submission
-function enableSubmit(){
-    update.setAttribute("action", "updateProduct.php");
-    update.setAttribute("enctype", "multipart/form-data");
-    update.setAttribute("onsubmit", "return true");
-}
-
-//Prevent Data Submission
-function preventSubmit() {
-	update.setAttribute("action", "");
-    update.setAttribute("enctype", "");
-	update.setAttribute("onsubmit", "return false;");
-}
-
-
 //////////Checks for errors upon submission///////////////////
 document.update.submit.addEventListener("click", () => {
-    if (brand.value != "" && 
-        model.value != "" && 
-        regExPrice.test(price.value) && 
-        size.value != "" ){
-        enableSubmit();
-    }else if (brand.value == ""){
-        preventSubmit();
-        alert("Please Enter a Brand Name");
-        brand.focus();
-		brand.select();
-    }else if (model.value == ""){
-        preventSubmit();
-        alert("Please Enter a Model Name");
-        model.focus();
-		model.select();
-    }else if (!regExPrice.test(price.value)){
-        preventSubmit();
-        alert("Please Enter a Legitemate price");
-        price.focus();
-		price.select();
-    } else if (size.value == ""){
-        preventSubmit();
-        alert("Please Enter a size");
-        size.focus();
-		size.select();
-    }
-    
+    prodValidation();
 });
 
 </script>
