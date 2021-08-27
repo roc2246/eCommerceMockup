@@ -63,14 +63,40 @@ function preventSubmit() {
 
 //////////Checks for errors upon submission///////////////////
 document.uploads.submit.addEventListener("click", function(){
-    prodValidation();
+    if (brand.value != "" && 
+        model.value != "" && 
+        regExPrice.test(price.value) && 
+        size.value != "" ){
+        alert("SUCCESS");
+        enableSubmit();
+    }else if (brand.value == ""){
+        preventSubmit();
+        alert("Please Enter a Brand Name");
+        brand.focus();
+		brand.select();
+    }else if (model.value == ""){
+        preventSubmit();
+        alert("Please Enter a Model Name");
+        model.focus();
+		model.select();
+    }else if (!regExPrice.test(price.value)){
+        preventSubmit();
+        alert("Please Enter a Legitemate price");
+        price.focus();
+		price.select();
+    } else if (size.value == ""){
+        preventSubmit();
+        alert("Please Enter a size");
+        size.focus();
+		size.select();
+    }
+    
 });
 
 
 
 
 </script>
-<script src="validation.js"></script>
 <a href="mainAdmin.php">Back</a>
 
 </body>
