@@ -20,6 +20,33 @@ function loginValid(username, password){
 
 
 //For upload/update products (Will work on)
+if(window.location.pathname == "/eCommerce/uploadProduct.php"){
+
+    //Form
+    var uploadFrm = document.uploads;
+
+    //Textboxes
+    var brand = document.uploads.brand;
+    var model = document.uploads.model;
+    var price = document.uploads.price;
+    var size = document.uploads.size;
+
+}else if(window.location.pathname == "/eCommerce/updateProduct.php"){
+
+    //Form
+    var updateFrm = document.update;
+
+    //Textboxes
+    var brand = document.update.brand;
+    var model = document.update.model;
+    var price = document.update.price;
+    var size = document.update.size;
+    
+}
+
+//RegEx
+var regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
+
 function prodValidation(){
     if (brand.value != "" && 
        model.value != "" && 
