@@ -68,7 +68,7 @@ const price = document.update.price;
 const size = document.update.size;
 
 //RegEx
-const regExPrice = /(\d+\.\d{1,2})/g;
+const regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
 
 //Enable Data Submission
 function enableSubmit(){
