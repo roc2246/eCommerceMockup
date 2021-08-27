@@ -19,6 +19,8 @@ function loginValid(username, password){
   }
 
 
+
+  
 //For upload/update products (Will work on)
 if(window.location.pathname == "/eCommerce/uploadProduct.php"){
 
