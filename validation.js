@@ -41,13 +41,13 @@ if(window.location.pathname == "/eCommerce/uploadProduct.php"){
     var model = document.update.model;
     var price = document.update.price;
     var size = document.update.size;
-    
+
 }
 
-//RegEx
-var regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
-
 function prodValidation(){
+    //RegEx
+    var regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
+
     if (brand.value != "" && 
        model.value != "" && 
        regExPrice.test(price.value) && 
