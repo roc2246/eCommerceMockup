@@ -18,7 +18,10 @@ function loginValid(username, password){
     } 
   }
 
+<<<<<<< HEAD
 //For upload/update products
+=======
+>>>>>>> 3d76862f2933fa7ac84d066308a3beb789bbd112
 function prodValidation(){
     if (brand.value != "" && 
        model.value != "" && 
