@@ -19,7 +19,7 @@ function loginValid(username, password){
   }
 
 
-//For upload/update products
+//For upload/update products (Will work on)
 function prodValidation(){
     if (brand.value != "" && 
        model.value != "" && 
