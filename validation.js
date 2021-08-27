@@ -18,6 +18,7 @@ function loginValid(username, password){
     } 
   }
 
+
 //For upload/update products
 function prodValidation(){
     if (brand.value != "" && 
