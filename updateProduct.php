@@ -35,10 +35,9 @@ session_start();
 
 <a href="mainAdmin.php">Back</a>
 
-<!--For assigning values to textboxes-->
 <script>
-
-    let totalOptions = document.getElementById("ID").options;
+  //For assigning values to textboxes
+  let totalOptions = document.getElementById("ID").options;
     function option(optNo, strNo){
     return totalOptions.item(optNo).text.split(" - ")[strNo];
     }
@@ -61,7 +60,11 @@ session_start();
 <script>
 //////////Checks for errors upon submission///////////////////
 document.update.submit.addEventListener("click", () => {
-    prodValidation();
+  if (document.getElementById("ID").value === "Select Inventory Item:"){
+      alert("Please make a selection.");
+    }else{
+      prodValidation();
+    }
 });
 
 </script>

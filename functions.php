@@ -281,9 +281,11 @@ function deleteRows() {
 
       $result = mysqli_query($connection, $query);
         if(!$result) {
-          die("QUERY FAILED" . mysqli_error($connection));    
+          die("QUERY FAILED" . mysqli_error($connection)); 
+        }else if($id=="Select Inventory Item:"){
+          echo "Please Make a Selection.";
+          header('Refresh: 1');
         }else {
-          echo "Record Updated"; 
           header('Refresh: 1');
           }   
         }
