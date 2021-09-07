@@ -157,3 +157,16 @@ input[type=submit]{
 	text-decoration: none;
 	cursor: pointer;
   }
+
+ /*Mobile*/
+ @media only screen and (max-width: 414px){
+   .item{
+   margin-top: 10px;
+   }
+
+   #myModal {
+	margin: -26px; /* 15% from the top and centered */
+	
+  }
+
+  }
