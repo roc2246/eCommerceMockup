@@ -4,7 +4,12 @@ if ($_SERVER['HTTP_HOST'] == 'localhost'){
   $username = 'root';
   $password = 'root';
   $database = 'ecommerce';
-} else {
+} else if($_SERVER['HTTP_HOST'] == 'wh963069.ispot.cc'){
+  $servername = 'wh963069.ispot.cc';
+  $username = 'childswe_realEstate';
+  $password = 'XXSBVxuc';
+  $database = 'childswe_realEstate';
+}else {
   $servername = 'localhost';
   $username = 'roc09090';
   $password = 'je5umyju5';
