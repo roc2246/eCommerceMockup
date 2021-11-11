@@ -6,9 +6,9 @@ if ($_SERVER['HTTP_HOST'] == 'localhost'){
   $database = 'ecommerce';
 } else if($_SERVER['HTTP_HOST'] == 'wh963069.ispot.cc'){
   $servername = 'wh963069.ispot.cc';
-  $username = 'childswe_realEstate';
-  $password = 'XXSBVxuc';
-  $database = 'childswe_realEstate';
+  $username = 'childswe_eCommerce';
+  $password = 'VJChkRFx';
+  $database = 'childswe_eCommerce';
 }else {
   $servername = 'localhost';
   $username = 'roc09090';
