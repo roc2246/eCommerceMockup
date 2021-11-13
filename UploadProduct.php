@@ -4,7 +4,7 @@ session_start();
 ?>
 <?php include 'functions.php';?>
 <?php include 'include/connect.php'; ?>
-
+<?php include 'include/images.php';?>
 <?php include 'include/header.php'; ?>
 <script src="validation.js"></script>
     <title>Upload Your Inventory</title>
@@ -29,7 +29,7 @@ session_start();
  
 <div id="concept">
 <h4>Upload Status</h4>
-<?php invenProd(); checkTempLocation(); ?>
+<?php invenProd(); uploadImage('uploads'); checkTempLocation(); ?>
 </div>
 
     </form>

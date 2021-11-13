@@ -4,6 +4,7 @@ session_start();
 ?>
 <?php include 'include/connect.php'; ?>
 <?php include 'functions.php';?>
+<?php include 'include/images.php';?>
 
 
 <?php include 'include/header.php'; ?>
