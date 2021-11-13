@@ -1,6 +1,4 @@
 <?php
-//For debugging purposes
-//echo sys_get_temp_dir() . "<br><br>";
 
 function invenProd(){
     if(isset($_POST['submit'])) {
