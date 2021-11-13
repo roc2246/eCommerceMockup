@@ -219,7 +219,7 @@ function deleteRows() {
       $query .= "brand = '$brand', ";
       $query .= "model = '$model', ";
       $query .= "size = '$size', ";
-      if(sys_get_temp_dir() == '/tmp'){
+      if(!file_exists(sys_get_temp_dir())){
         $query .= "price = '$price' ";
       } else{
         $query .= "price = '$price', ";
