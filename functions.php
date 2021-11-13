@@ -292,7 +292,7 @@ function deleteRows() {
       }
 
   function checkTempLocation(){
-    if (sys_get_temp_dir() == '/tmp'){
+    if (!file_exists(sys_get_temp_dir())){
       echo "<h4>Sorry, image uploading is down for maintenance.</h4>";
     
     } else {
@@ -302,7 +302,7 @@ function deleteRows() {
 }
 
 function enableUpload(){
-  if(sys_get_temp_dir() != '/tmp'){
+  if(file_exists(sys_get_temp_dir())){
     echo "<input type='file' name='image'><br><br>";
      } else {
     echo "<input type='file' name='image' disabled><br><br>";
