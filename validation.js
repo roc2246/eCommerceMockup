@@ -1,13 +1,17 @@
 //for main page
 if (window.location.pathname == "/eCommerce/" 
 || window.location.pathname == "/eCommerce/index.php" 
+|| window.location.pathname == "/projects/eCommerce/" 
+|| window.location.pathname == "/projects/eCommerce/index.php" 
 && document.getElementsByTagName("a")[0].innerHTML!= "Logout"){
 var userName = document.login.username;
 var userPassword = document.login.password;
 } 
 
 //for admin page
-if (window.location.pathname == "/eCommerce/admin.php"){
+if (window.location.pathname == "/eCommerce/admin.php"
+|| window.location.pathname == "/projects/eCommerce/admin.php"
+){
 var adminName = document.adminLogin.AMusername;
 var adminPassword = document.adminLogin.AMpassword;
 }
@@ -23,7 +27,8 @@ function loginValid(username, password){
 //For upload/update products
 function prodValidation(){
   //Assigns variables based off of URL location path
-  if(window.location.pathname == "/eCommerce/uploadProduct.php"){
+  if(window.location.pathname == "/eCommerce/uploadProduct.php"
+  || window.location.pathname == "/projects/eCommerce/uploadProduct.php"){
     //Assigns where form will process data 
     var page = "uploadProduct.php";
 
@@ -36,7 +41,8 @@ function prodValidation(){
     var price = document.uploads.price;
     var size = document.uploads.size;
 
-  } else if(window.location.pathname == "/eCommerce/updateProduct.php"){
+  } else if(window.location.pathname == "/eCommerce/updateProduct.php"
+  || window.location.pathname == "/projects/eCommerce/updateProduct.php"){
    //Assigns where form will process data 
    var page = "updateProduct.php";
 
