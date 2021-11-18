@@ -2,10 +2,14 @@
 ob_start();
 session_start(); 
 ?>
-<?php include 'functions.php';?>
-<?php include 'include/connect.php'; ?>
-<?php include 'include/images.php';?>
-<?php include 'include/header.php'; ?>
+<?php 
+include 'functions.php';
+include 'include/connect.php'; 
+include 'include/images.php';
+include 'include/phpCRUD.php';
+include 'include/header.php'; 
+?>
+
 <script src="validation.js"></script>
     <title>Upload Your Inventory</title>
 </head>
