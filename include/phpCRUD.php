@@ -57,9 +57,9 @@ while($row = mysqli_fetch_assoc($result)) {
         $product = "<div class='item'>";
 
         if ($row['image'] == ''){
-          $product.=  "<img src='noImage.png' width='50px' height='120px' alt='".$row['brand']." ".$row['model']."'><br>";
+          $product.=  "<img src='noImage.png' width='50' height='120' alt='".$row['brand']." ".$row['model']."'><br>";
         }else {
-          $product.=  "<img src='uploads/" . $row['image'] . "' width='50px' height='120px' alt='".$row['brand']." ".$row['model']."'><br>";
+          $product.=  "<img src='uploads/" . $row['image'] . "' width='50' height='120' alt='".$row['brand']." ".$row['model']."'><br>";
         }
         $product.= "Brand: <span class='brand'>" . $row['brand'] . "</span><br>";
         $product.= "Model: <span class='model'>" . $row['model'] . "</span><br>";
