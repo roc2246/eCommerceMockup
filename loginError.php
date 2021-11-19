@@ -1,4 +1,6 @@
-<?php include 'include/header.php'; ?>
+<?php
+
+require 'include/header.php'; ?>
     <title>ERROR</title>
 </head>
 <body>

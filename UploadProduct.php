@@ -3,11 +3,11 @@ ob_start();
 session_start(); 
 ?>
 <?php 
-include 'functions.php';
-include 'include/connect.php'; 
-include 'include/images.php';
-include 'include/phpCRUD.php';
-include 'include/header.php'; 
+require 'functions.php';
+require 'include/connect.php'; 
+require 'include/images.php';
+require 'include/phpCRUD.php';
+require 'include/header.php'; 
 ?>
 
 <script src="validation.js"></script>

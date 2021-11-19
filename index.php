@@ -1,17 +1,30 @@
 <?php 
+/** 
+ * The Condo - Main Page
+ * 
+ * PHP version 7.4
+ * 
+ * @category Main_Pages
+ * @package  Pages
+ * @author   Riley Childs <riley.childs@yahoo.com>
+ * @license  Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+ * @link     http://wh963069.ispot.cc/projects/eCommerce/
+ */
+
+
   //Tracks user session
   ob_start();
   session_start(); 
 
   //Stroes php connection 
-  include 'include/connect.php'; 
+  require 'include/connect.php'; 
 
   //Stores php functions
-  include 'include/phpCRUD.php';
-  include 'functions.php';
+  require 'include/phpCRUD.php';
+  require 'functions.php';
 
   //Stores page header
-  include 'include/header.php';
+  require 'include/header.php';
 ?>
 
 <script src="ajax.js"></script>
@@ -32,7 +45,8 @@
     //Resets input counter value    
     var removeBttn = document.getElementsByClassName("remove-button");
     for (var b=0; b<removeBttn.length; b++){
-        removeBttn[b].setAttribute("onclick", "removeItem("+ b + "); removeCOItem("+ b + ")");
+        removeBttn[b].setAttribute("onclick", 
+        "removeItem("+ b + "); removeCOItem("+ b + ")");
     }
 
   }
@@ -48,7 +62,7 @@
     <h4>Second-Rate Boardshop</h4>
     <?php greetUser();?>
   </header>
-  <?php include 'include/navigation.php'; ?>
+  <?php require 'include/navigation.php'; ?>
 
 
   <div class="main-content">
@@ -58,7 +72,8 @@
       <form name="login" method="post" action="index.php" autocomplete="off"> 
         <input type="text" name="username" placeholder = "username">
         <input type="password" name="password" placeholder="password">
-        <input type="submit" name="submit" onclick="loginValid(userName, userPassword)">
+        <input type="submit" name="submit" 
+        onclick="loginValid(userName, userPassword)">
         <?php login('users', '0', '', 'username', 'password');?>
       </form>
       <a href="newUser.php">Register Account</a><br>

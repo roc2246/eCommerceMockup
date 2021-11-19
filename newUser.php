@@ -1,7 +1,7 @@
-<?php include 'include/connect.php'; ?>
-<?php include 'functions.php';?>
-
-<?php include 'include/header.php'; ?>
+<?php 
+require 'include/connect.php'; 
+require 'functions.php';
+require 'include/header.php'; ?>
     <title>Register Account</title>
 </head>
 <body>
