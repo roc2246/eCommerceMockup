@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
  //Deletes login element if shopper is logged on
  var check = document.getElementsByClassName("item");
  for(let q = 0; q<check.length; q++){
@@ -62,6 +64,7 @@ function error(){
     } else{
   
      alert("Thank you for your order!");
+     // eslint-disable-next-line for-direction
      for (let s = c; s<document.getElementsByClassName("cart-item").length; s--){
         removeItem([s]);  
        removeCOItem([s]);

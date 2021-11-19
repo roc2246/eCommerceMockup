@@ -1,3 +1,5 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable no-unused-vars */
 //for main page
 if (window.location.pathname == "/eCommerce/" 
 || window.location.pathname == "/eCommerce/index.php" 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Hides Child Elements
 function hideSubCats(){
 	var subCats = document.getElementsByTagName("UL");

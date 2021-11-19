@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 //Tracks the request
 var xmlhttp;
@@ -7,6 +8,7 @@ function compatibility() {
   if (window.XMLHttpRequest) {
     xmlhttp = new XMLHttpRequest();
   } else {
+    // eslint-disable-next-line no-undef
     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
 }
