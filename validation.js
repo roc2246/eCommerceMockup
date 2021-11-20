@@ -6,14 +6,6 @@
 /* eslint-disable no-redeclare */
 /* eslint-disable no-unused-vars */
 
-// Object for product forms
-const inventoryItem = {
-  brand: document.uploads.brand,
-  model: document.uploads.model,
-  price: document.uploads.price,
-  size: document.uploads.size,
-};
-
 // for main page
 if (window.location.pathname === '/eCommerce/'
 || window.location.pathname === '/eCommerce/index.php'
@@ -48,6 +40,19 @@ function prodValidation() {
 
     // Form
     var form = document.uploads;
+
+    // Object for product forms
+    var inventoryItem = {
+      brand: document.uploads.brand,
+      model: document.uploads.model,
+      price: document.uploads.price,
+      size: document.uploads.size,
+    };
+
+    // Descturctured elements
+    var {
+      brand, model, price, size,
+    } = inventoryItem;
   } else if (window.location.pathname === '/eCommerce/updateProduct.php'
   || window.location.pathname === '/projects/eCommerce/updateProduct.php') {
     // Assigns where form will process data
@@ -55,6 +60,19 @@ function prodValidation() {
 
     // Form
     var form = document.update;
+
+    // Object for product forms
+    var inventoryItem = {
+      brand: document.update.brand,
+      model: document.update.model,
+      price: document.update.price,
+      size: document.update.size,
+    };
+
+    // Descturctured elements
+    var {
+      brand, model, price, size,
+    } = inventoryItem;
   }
 
   // Enable Data Submission
@@ -74,31 +92,31 @@ function prodValidation() {
   // RegEx
   var regExPrice = /^[0-9]+(\.[0-9]{2})?$/;
 
-  if (inventoryItem.brand.value !== ''
-  && inventoryItem.model.value !== ''
-  && regExPrice.test(inventoryItem.price.value)
-  && inventoryItem.size.value !== '') {
+  if (brand.value !== ''
+  && model.value !== ''
+  && regExPrice.test(price.value)
+  && size.value !== '') {
     alert('SUCCESS');
     enableSubmit();
-  } else if (inventoryItem.brand.value === '') {
+  } else if (brand.value === '') {
     preventSubmit();
     alert('Please Enter a Brand Name');
-    inventoryItem.brand.focus();
-    inventoryItem.brand.select();
-  } else if (inventoryItem.model.value === '') {
+    brand.focus();
+    brand.select();
+  } else if (model.value === '') {
     preventSubmit();
     alert('Please Enter a Model Name');
-    inventoryItem.model.focus();
-    inventoryItem.model.select();
-  } else if (!regExPrice.test(inventoryItem.price.value)) {
+    model.focus();
+    model.select();
+  } else if (!regExPrice.test(price.value)) {
     preventSubmit();
     alert('Please Enter a Legitemate price');
-    inventoryItem.price.focus();
-    inventoryItem.price.select();
-  } else if (inventoryItem.size.value === '') {
+    price.focus();
+    price.select();
+  } else if (size.value === '') {
     preventSubmit();
     alert('Please Enter a size');
-    inventoryItem.size.focus();
-    inventoryItem.size.select();
+    size.focus();
+    size.select();
   }
 }

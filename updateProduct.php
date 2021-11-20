@@ -19,6 +19,7 @@ require 'include/connect.php';
 require 'include/images.php'; 
 require 'include/phpCRUD.php';
 require 'functions.php';
+require 'include/header.php'; 
 ?>
 
 
@@ -47,7 +48,7 @@ require 'functions.php';
                     <?php showAllData();?>
                  </select>
               <input type="submit" name="submit" value="UPDATE">
-              <?php updateProduct(); checkTempLocation(); ?>
+              <?php updateProduct(); uploadImage('uploads'); checkTempLocation(); ?>
             </form>
 
 <a href="mainAdmin.php">Back</a>
