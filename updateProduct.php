@@ -1,17 +1,29 @@
 <?php 
+/** 
+ * The Condo - Update Product Page
+ * 
+ * PHP version 7.4
+ * 
+ * @category Admin_Pages
+ * @package  Pages
+ * @author   Riley Childs <riley.childs@yahoo.com>
+ * @license  Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+ * @link     http://wh963069.ispot.cc/projects/eCommerce/updateProduct.php
+ */
+
 ob_start();
 session_start(); 
 ?>
 <?php
-include 'include/connect.php';
-include 'include/images.php'; 
-include 'include/phpCRUD.php';
-include 'functions.php';
+require 'include/connect.php';
+require 'include/images.php'; 
+require 'include/phpCRUD.php';
+require 'functions.php';
 ?>
 
 
 
-<?php include 'include/header.php'; ?>
+<?php require 'include/header.php'; ?>
 <script src="validation.js"></script>
     <title>Update Inventory Item</title>
 </head>

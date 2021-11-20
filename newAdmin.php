@@ -1,7 +1,19 @@
-<?php include 'include/connect.php'; ?>
-<?php include 'functions.php';?>
+<?php 
+/** 
+ * The Condo - Register admin account
+ * PHP version 7.4
+ * 
+ * @category Admin_Login_Pages
+ * @package  Logins
+ * @author   Riley Childs <riley.childs@yahoo.com>
+ * @license  Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+ * @link     http://wh963069.ispot.cc/projects/eCommerce/newUser.php
+ */
 
-<?php include 'include/header.php'; ?>
+require 'include/connect.php'; ?>
+<?php require 'functions.php';?>
+
+<?php require 'include/header.php'; ?>
     <title>Admin Login</title>
 </head>
 <body>

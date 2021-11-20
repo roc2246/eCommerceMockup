@@ -1,14 +1,26 @@
 <?php 
+/** 
+ * The Condo - Delete Product Page
+ * 
+ * PHP version 7.4
+ * 
+ * @category Admin_Pages
+ * @package  Pages
+ * @author   Riley Childs <riley.childs@yahoo.com>
+ * @license  Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+ * @link     http://wh963069.ispot.cc/projects/eCommerce/deleteProduct.php
+ */
+
 ob_start();
 session_start(); 
 ?>
 <?php 
-include 'include/connect.php' ;
-include 'include/phpCRUD.php';
-include 'functions.php'
+require 'include/connect.php' ;
+require 'include/phpCRUD.php';
+require 'functions.php'
 ;?>
 
-<?php include 'include/header.php'; ?>
+<?php require 'include/header.php'; ?>
     <title>Delete Product</title>
 </head>
 <body>
